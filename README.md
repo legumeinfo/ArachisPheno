@@ -2,9 +2,9 @@
 # AraPheno  
 AraPheno python code based on Django 1.9.6.   
 -->  
-# ArachisPheno
-## About
+# ArachisPheno  
 
+## About  
 Phenotype data for Arachis (forked from AraPheno)
 
 
