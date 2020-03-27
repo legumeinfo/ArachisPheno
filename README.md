@@ -3,8 +3,9 @@
 AraPheno python code based on Django 1.9.6.   
 -->  
 # ArachisPheno  
-**Caution: Data private (no URL in Gihub)** 
+**Caution: Data NOT PUBLIC (no URL in Github)** 
+
 ## About  
-Phenotype data for Arachis (forked from AraPheno)
+A utility along the line of AraPheno (https://arapheno.1001genomes.org/) for serving phenotype data for Arachis (peanut).
 
 
