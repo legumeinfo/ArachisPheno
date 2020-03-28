@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__+ "/../")))
 
-ADMINS = [('Uemit', 'uemit.seren@gmi.oeaw.ac.at')]
+ADMINS = [('svengato', 'svengato@svengato.com')]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -24,7 +24,7 @@ ADMINS = [('Uemit', 'uemit.seren@gmi.oeaw.ac.at')]
 SECRET_KEY = os.environ.get('SECRET_KEY','REPLACE_WITH_PROD_KEY')
 
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS','127.0.0.1').split()
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS','dev-arachispheno').split()
 
 # Application definition
 
@@ -143,12 +143,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'../static'),]
 # Needed to get     request.is_secure() == True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-GITHUB_URL='https://github.com/1001genomes/AraPheno/commit'
+GITHUB_URL='https://github.com/legumeinfo/ArachisPheno/commit'
 DATACITE_PREFIX = '10.21958'
 DATACITE_USERNAME = os.environ.get('DATACITE_USERNAME', None)
 DATACITE_PASSWORD = os.environ.get('DATACITE_PASSWORD', None)
 DATACITE_DOI_URL = 'http://search.datacite.org/works'
-DOI_BASE_URL = 'http://arapheno.1001genomes.org'
+DOI_BASE_URL = 'http://arapheno.1001genomes.org' # TODO: should this be PeanutBase?
 
 
 LOGGING = {
