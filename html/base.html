@@ -5,10 +5,10 @@
 <html>
     <head>
         <!--Import Google Icon Font-->
-        <title>{% block title %}AraPheno - A public phenotype database for Arabidopsis thaliana{% endblock title %}</title>
+        <title>{% block title %}ArachisPheno - A public phenotype database for <i>Arachis</i> (peanut){% endblock title %}</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
-        <link type="text/css" rel="stylesheet" href="/static/css/arapheno.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="/static/css/arachispheno.css" media="screen,projection"/>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/intro.min.js"></script>
@@ -54,14 +54,14 @@
                     <div class="switch">
                         <label>
                             <div class="col s3">
-                            <a id="logo-container" href="/" class="brand-logo {{ is_rnaseq|yesno:'grey-text text-lighten-1,black-text' }}">AraPheno</a>
+                            <a id="logo-container" href="/" class="brand-logo {{ is_rnaseq|yesno:'grey-text text-lighten-1,black-text' }}">ArachisPheno</a>
                         </div>
                         <div class="col s1 hide-on-med-and-down">
                                 <input type="checkbox" {% if is_rnaseq %} checked {% endif %} }} id="rnaseq-input-base">
                                 <span id="rnaseq-lever" class="lever" ></span>
                             </div>
                             <div class="col s3 hide-on-med-and-down">
-                                    <a id="other-view" href="/rnaseq" class="brand-logo {{ is_rnaseq|yesno:'black-text,blue-text text-lighten-4' }}">Ara<b class="{{ is_rnaseq|yesno:'blue-text text-darken-3,' }}">RNASeq</b></a>
+                                    <a id="other-view" href="/rnaseq" class="brand-logo {{ is_rnaseq|yesno:'black-text,blue-text text-lighten-4' }}">Arachis<b class="{{ is_rnaseq|yesno:'blue-text text-darken-3,' }}">RNASeq</b></a>
                                 </div>
                         </label>
                     </div>
@@ -104,7 +104,7 @@
                     <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                     <li>
-                    <a class="collapsible-header waves-effect waves-grey"><strong>AraPheno Data</strong></a>
+                    <a class="collapsible-header waves-effect waves-grey"><strong>ArachisPheno Data</strong></a>
                     <div class="collapsible-body" style="display: block;">
                         <ul>
                         <li><a class="black-text" href="/studies">View Studies</a></li>
@@ -118,7 +118,7 @@
 		    <li class="divider"></li>
                     <ul class="collapsible collapsible-accordion">
                     <li>
-                    <a class="collapsible-header waves-effect waves-grey"><strong>AraRNASeq</strong></a>
+                    <a class="collapsible-header waves-effect waves-grey"><strong>ArachisRNASeq</strong></a>
                     <div class="collapsible-body" style="display: block;">
                         <ul>
                             <li><a class="black-text" href="/rnaseq_studies">View RNASeq Studies</a></li>
@@ -131,7 +131,7 @@
                     <li class="divider"></li>
                     <ul class="collapsible collapsible-accordion">
                     <li>
-                    <a class="collapsible-header waves-effect waves-grey"><strong>AraPheno Tools</strong></a>
+                    <a class="collapsible-header waves-effect waves-grey"><strong>ArachisPheno Tools</strong></a>
                     <div class="collapsible-body" style="display: block;">
                         <ul>
                             <li><a class="black-text" href="/correlation">Phenotype Correlation</a></li>
@@ -163,7 +163,7 @@
             </div>
             <div id="footerdark" class="footer-copyright {{ is_rnaseq|yesno:'blue darken-3,brown' }}">
                 <div class="container">
-            AraPheno is a public database for <em>Arabidopsis thaliana</em> phenotypes (&copy 2016-2019)
+            ArachisPheno is a public database for <em><i>Arachis</i></em> (peanut) phenotypes (&copy 2020)
             <a class="modal-trigger waves-effect waves-light white-text text-lighten-4 right" href="#footermodal">Impressum</a>
             <div class="version hidden-sm-and-down">
                 <ul>

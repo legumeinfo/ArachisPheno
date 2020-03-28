@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} AraPheno - General FAQ{% endblock title %}
+{% block title %} ArachisPheno - General FAQ{% endblock title %}
 
 {% block content %}
 <div id="index-banner" class="parallax-container" style="height:130px">
@@ -8,7 +8,7 @@
         <div class="container">
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/ara4.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
 </div>
 <div class="container">
     <div class="section">
@@ -18,24 +18,24 @@
                 <ul class="collection">
                 <li class="collection-item avatar">
                 <i class="material-icons circle brown">help_outline</i>
-                <span class="title black-text" style="font-size:20px">General FAQ about AraPheno</span>
+                <span class="title black-text" style="font-size:20px">General FAQ about ArachisPheno</span>
                 <br><br>
                  <ul class="collapsible popout" data-collapsible="accordion">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">star</i>What is AraPheno?</div>
-                        <div class="collapsible-body"><p>AraPheno is a central repository for population scale phenotype data for the model plant <em>Arabidopsis thaliana</em></p></div>
+                        <div class="collapsible-header"><i class="material-icons">star</i>What is ArachisPheno?</div>
+                        <div class="collapsible-body"><p>ArachisPheno is a central repository for population scale phenotype data for <em><i>Arachis</i></em> (peanut) species.</p></div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">star</i>Is the data in AraPheno public?</div>
-                        <div class="collapsible-body"><p>Data on AraPheno is public. Please cite the phenotype, original study of the phenotype as well as AraPheno if you use any data from this database.</p></div>
+                        <div class="collapsible-header"><i class="material-icons">star</i>Is the data in ArachisPheno public?</div>
+                        <div class="collapsible-body"><p>Data on ArachisPheno is public. Please cite the phenotype, original study of the phenotype as well as ArachisPheno if you use any data from this database.</p></div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">star</i>Which information is stored in AraPheno?</div>
+                        <div class="collapsible-header"><i class="material-icons">star</i>Which information is stored in ArachisPheno?</div>
                         <div class="collapsible-body"><p>This database contains public phenotype data from different studies. RNASeq data was also added recently.</p></div>
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">star</i>Which data formats are supported?</div>
-                        <div class="collapsible-body"><p>AraPheno supports a variety of different data formats, including CSV, JSON, PLINK and ISA-TAB format.</p></div>
+                        <div class="collapsible-body"><p>ArachisPheno supports a variety of different data formats, including CSV, JSON, PLINK and ISA-TAB format.</p></div>
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">star</i>Is it possible to download the phenotype data?</div>
@@ -59,7 +59,7 @@
                         <div class="collapsible-body">
                             <p>
                                 Yes, it is possible to preserve the specific value of each replicate across multiple phenotypes.
-                                In case of PLINK or CSV just repeat the FID (accession_id) multiple times and add a an arbitary number into the IID (replicate_id) column or alternatively leave it empty (it is not used by AraPheno).
+                                In case of PLINK or CSV just repeat the FID (accession_id) multiple times and add a an arbitary number into the IID (replicate_id) column or alternatively leave it empty (it is not used by ArachisPheno).
                                 <br>For <b>PLINK</b> this should look as follows:
                             </p>
                             <pre>
@@ -85,7 +85,7 @@
                             </pre>
                             <p> The main difference between PLINK and CSV is that PLINK uses a space as a delimiter and CSV uses a comma. Addtionally the headers are different.
                                 <br><br><b>Empty values are encoded as empty cells in both CSV and PLINK </b>(see pheno1 for accession_id/FID: 6414 and replicate_id/IID: 5)<br><br>
-                                AraPheno will create separate replicate values for each accession and make sure that for example replicate <b>1</b> of <b>6909</b> has 24.6 for <b>pheno1</b> and 100.2 for </b>pheno2</b>.<br>
+                                ArachisPheno will create separate replicate values for each accession and make sure that for example replicate <b>1</b> of <b>6909</b> has 24.6 for <b>pheno1</b> and 100.2 for </b>pheno2</b>.<br>
                                 This also works for the ISA-TAB format.
                             </p>
                         </div>
@@ -96,7 +96,7 @@
                     </li>-->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">star</i>Why is the RNASeq on a separate page?</div>
-                        <div class="collapsible-body"><p>RNASeq experiments usually generate a lot of data, hence treating each gene in an RNASeq experiment as a separate phenotype on AraPheno would completely overshadow the other reported phenotypes. Therefore, we report RNASeq data separately, but in a similar way.</p></div>
+                        <div class="collapsible-body"><p>RNASeq experiments usually generate a lot of data, hence treating each gene in an RNASeq experiment as a separate phenotype on ArachisPheno would completely overshadow the other reported phenotypes. Therefore, we report RNASeq data separately, but in a similar way.</p></div>
                     </li>
                  </ul>
 

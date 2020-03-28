@@ -5,9 +5,9 @@
 <div id="index-banner" class="parallax-container" style="height:370px">
     <div class="section no-pad-bot">
         <div class="container">
-            <h1 class="header center white-text text-lighten-2">AraPheno</h1>
+            <h1 class="header center white-text text-lighten-2">ArachisPheno</h1>
             <div class="row center">
-                <h5 class="header col s12 m12 l12 light">AraPheno is a public database collection of <em>Arabidopsis thaliana</em> phenotypes.</h5>
+                <h5 class="header col s12 m12 l12 light">ArachisPheno is a public database collection of <em><i>Arachis</i></em> (peanut) phenotypes.</h5>
                 <br>
                 <br>
                 <h5 class="header col s12 m12 l12 light">This Database allows to search and filter for public phenotypes and to obtain additional meta-information.</h5>
@@ -22,7 +22,7 @@
             </form>
         </div>
     </div>
-    <div class="parallax"><img src="static/img/ara1.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
 </div>
 
 <div class="container scale-transition" id="phenotype-container">
@@ -36,7 +36,7 @@
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">view_list</i></h3>
                     <h5 class="center">Public Studies</h5>
-                    <p class="light justify">Browse through all available public <em>Arabidopsis thaliana</em> studies and retrive additional information.</p>
+                    <p class="light justify">Browse through all available public <em><i>Arachis</i></em> studies and retrive additional information.</p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown" href="{% url 'studies' %}" id="view_studies_button"><i class="material-icons left">view_list</i>View Studies</a>
             </div>
@@ -44,7 +44,7 @@
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">spa</i></h3>
                     <h5 class="center">Public Phenotypes</h5>
-                    <p class="light justify">Browse through all available public <em>Arabidopsis thaliana</em> phenotypes and studies and retrive additional information.</p>
+                    <p class="light justify">Browse through all available public <em><i>Arachis</i></em> phenotypes and studies and retrive additional information.</p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown" href="{% url 'phenotypes' %}" id="view_phenotypes_button"><i class="material-icons left">spa</i>View Phenotypes</a>
             </div>
@@ -52,7 +52,7 @@
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">bubble_chart</i></h3>
                     <h5 class="center">Master Accession Table</h5>
-		    <p class="light">Browse through all <em>Arabidopsis thaliana</em> accessions and find out how many phenotypes are available for which accessions.</p>
+		    <p class="light">Browse through all <em><i>Arachis</i></em> accessions and find out how many phenotypes are available for which accessions.</p>
                 </div>
 		<a class="waves-effect waves-light btn-large brown" id="view_accession_button" href="{% url 'accessions' %}"><i class="material-icons left">bubble_chart</i>View Accessions</a>
             </div>
@@ -77,7 +77,7 @@
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">code</i></h3>
                     <h5 class="center">REST API</h5>
-                    <p class="light">The REST API can be used to retrieve phenotype data and meta-information from AraPheno via URLs.</p>
+                    <p class="light">The REST API can be used to retrieve phenotype data and meta-information from ArachisPheno via URLs.</p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown" id="rest_button" href="/faq/rest/"><i class="material-icons left">code</i>REST API</a>
             </div>
@@ -89,7 +89,7 @@
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">rowing</i></h3>
                     <h5 class="center">Take a Tour</h5>
                     <p class="light">
-                    Take a guided tour through Arapheno and familiarise yourself with all available public functions. </p>
+                    Take a guided tour through ArachisPheno and familiarise yourself with all available public functions. </p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown" id="start_tour" ><i class="material-icons left">rowing</i>Take a Tour</a>
             </div>
@@ -98,7 +98,7 @@
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">help_outline</i></h3>
                     <h5 class="center">FAQ & Tutorials</h5>
-                    <p class="light">Here, you can find detailed help about the functions of AraPheno, its integrated data and frequently asked questions.</p>
+                    <p class="light">Here, you can find detailed help about the functions of ArachisPheno, its integrated data and frequently asked questions.</p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown modal-trigger" href="#faqmodal" id="faq_button"><i class="material-icons left">help_outline</i>FAQ</a>
             </div>
@@ -107,7 +107,7 @@
                     <div class="icon-block">
                         <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">feedback</i></h3>
                         <h5 class="center">Feedback & Issues</h5>
-                        <p class="light">Here, you can submit issues, feedback or any related questions regarding AraPheno.</p><br>
+                        <p class="light">Here, you can submit issues, feedback or any related questions regarding ArachisPheno.</p><br>
                     </div>
                     <a class="waves-effect waves-light btn-large brown modal-trigger" href="/feedback/" id="feedback_button"><i class="material-icons left">feedback</i>Feedback</a>
                 </div>
@@ -118,7 +118,7 @@
 </div>
 
 <div class="parallax-container" style="height:100px">
-    <div class="parallax"><img src="static/img/ara1.jpg" alt="Unsplashed background img 2"></div>
+    <div class="parallax"><img src="static/img/arachispheno_background.jpg" alt="Unsplashed background img 2"></div>
 </div>
 
 <div class="container">
@@ -181,7 +181,7 @@
     </div>
 </div>
 <div class="parallax-container" style="height:100px">
-    <div class="parallax"><img src="static/img/ara1.jpg" alt="Unsplashed background img 2"></div>
+    <div class="parallax"><img src="static/img/arachispheno_background.jpg" alt="Unsplashed background img 2"></div>
 </div>
 
 <script type="text/javascript">
@@ -208,7 +208,7 @@
         var steps = [
             {
                 element: '.header',
-                intro: 'AraPheno is a public database collection of <em>Arabidopsis thaliana</em> phenotypes. This tour will show the important features'
+                intro: 'ArachisPheno is a public database collection of <em><i>Arachis</i></em> (peanut) phenotypes. This tour will show the important features'
             },
             {
                 element: '#search_box',
@@ -216,11 +216,11 @@
             },
             {
                 element: '#faq_button',
-                intro: 'The FAQ section provides tutorials of the various features of AraPheno'
+                intro: 'The FAQ section provides tutorials of the various features of ArachisPheno'
             },
             {
                 element: '#rest_button',
-                intro: 'AraPheno provides a well-documented REST API for programmatic access to the data'
+                intro: 'ArachisPheno provides a well-documented REST API for programmatic access to the data'
             },
             {
                 element: '#view_phenotypes_button',

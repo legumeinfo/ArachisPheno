@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}AraPheno - Search Results{% endblock title %}
+{% block title %}ArachisPheno - Search Results{% endblock title %}
 
 {% load render_table from django_tables2 %}
 
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/ara1.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
 </div>
 
 <div id="downloadmodal" class="modal">
@@ -54,23 +54,23 @@
             <ul class="tabs">
                 <li class="tab col s3"><a class="active blue-text text-darken-3" href="#phenotypes">Results: RNASeqs
                 {% if nrnaseqs == 1 %}
-                       <div class="right"><span class="arabadge">{{nrnaseqs}} Result</span></div>
+                       <div class="right"><span class="badge">{{nrnaseqs}} Result</span></div>
                     {% else %}
-                       <div class="right"><span class="arabadge">{{nrnaseqs}} Results</span></div>
+                       <div class="right"><span class="badge">{{nrnaseqs}} Results</span></div>
                     {% endif %}
                 </a></li>
                 <li class="tab col s3"><a href="#studies" class="blue-text text-darken-3">Results: Studies
                     {% if nstudies == 1 %}
-                       <div class="right"><span class="arabadge">{{nstudies}} Result</span></div>
+                       <div class="right"><span class="badge">{{nstudies}} Result</span></div>
                     {% else %}
-                       <div class="right"><span class="arabadge">{{nstudies}} Results</span></div>
+                       <div class="right"><span class="badge">{{nstudies}} Results</span></div>
                     {% endif %}
                 </a></li>
                  <li class="tab col s3"><a href="#accessions" class="blue-text text-darken-3">Results: Accessions
                     {% if naccessions == 1 %}
-                       <div class="right"><span class="arabadge">{{naccessions}} Result</span></div>
+                       <div class="right"><span class="badge">{{naccessions}} Result</span></div>
                     {% else %}
-                       <div class="right"><span class="arabadge">{{naccessions}} Results</span></div>
+                       <div class="right"><span class="badge">{{naccessions}} Results</span></div>
                     {% endif %}
                 </a></li>
                 <div class="indicator blue" style="z-index:1"></div>
@@ -116,11 +116,11 @@
         footerdark.className = footerdark.className.replace("brown", "blue darken-3");
         // change header
         var title = document.getElementById('logo-container')
-        title.innerHTML = 'AraPheno <b class="blue-text text-darken-3">RNASeq</b>'
+        title.innerHTML = 'ArachisPheno <b class="blue-text text-darken-3">RNASeq</b>'
         title.href = '/rnaseq'
 
         var other = document.getElementById('other-view')
-        other.innerHTML = 'AraPheno'
+        other.innerHTML = 'ArachisPheno'
         other.className = other.className.replace('blue-text text-lighten-4', 'grey-text text-lighten-1')
         other.href = '/'
         // paginate color
