@@ -24,8 +24,8 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">code</i>What is a REST API?</div>
                         <div class="collapsible-body"><p>
-                        REST is an abbriviation for <strong>representational state transfer</strong>. It can be used to retrive data from ArachisPheno
-                        using certain URLs. You also can write custom scripts (e.g. in Python, Pearl, Java etc.) to request and download the information you need.
+                        <b>REST</b> is an abbreviation for <strong>representational state transfer</strong>. It can be used to retrieve data from ArachisPheno
+                        using a specially formatted URL. You also can write custom scripts (e.g. in Python, Perl, Java, etc.) to request and download the information you need.
                         <br>
                         <br>
                         All REST commands will start with the following prefix: <strong>/rest/</strong>
@@ -36,7 +36,7 @@
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get a list of all phenotypes?</div>
-                        <div class="collapsible-body"><p>You can use one of the following URL to retrive a list of phenotypes.
+                        <div class="collapsible-body"><p>You can use one of the following URLs to retrieve a list of phenotypes.
                         <br><br>
                         <strong>For CSV format: <a href="/rest/phenotype/list.csv">http://arapheno.1001genomes.org/rest/phenotype/list.csv</a></strong>
                         <br><br>
@@ -78,7 +78,7 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get transformed phenotype values for a certain phenotype?</div>
                             <div class="collapsible-body"><p>You can use either the primary id or DOI to get transformed phenotype values for a certain phenotype.
-                            Just replace &lt;q&gt; with the phenotype id or DOI. This will return transformed phenotype values for all transformations (sqrt, box-cox, log)
+                            Just replace &lt;q&gt; with the phenotype id or DOI. This will return transformed phenotype values for all transformations (sqrt, Box-Cox, log)
                             <br><br>
                             <strong>For CSV format: http://arapheno.1001genomes.org/rest/phenotype/&lt;q&gt;/transformations.csv</strong>
                             <br><br>
@@ -95,7 +95,7 @@
                         </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get a list of all studies?</div>
-                        <div class="collapsible-body"><p>You can use one of the following URL to retrive a list of studies.
+                        <div class="collapsible-body"><p>You can use one of the following URL to retrieve a list of studies.
                         <br><br>
                         <strong>For CSV format: <a href="/rest/study/list.csv">http://arapheno.1001genomes.org/rest/study/list.csv</a></strong>
                         <br><br>
@@ -136,7 +136,7 @@
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get a list of all accessions?</div>
-                        <div class="collapsible-body"><p>You can use one of the following URL to retrive a list of accessions.
+                        <div class="collapsible-body"><p>You can use one of the following URL to retrieve a list of accessions.
                         <br><br>
                         <strong>For CSV format: <a href="/rest/accession/list.csv">http://arapheno.1001genomes.org/rest/accession/list.csv</a></strong>
                         <br><br>
@@ -177,11 +177,11 @@
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get all phenotypes for a list of accessions?</div>
-                        <div class="collapsible-body"><p>You send a <code>POST</code> request with a list of accession ids (comma seperated) and the REST endpoint will return a map with accession_id -> list of phenotypes.
+                        <div class="collapsible-body"><p>You send a <code>POST</code> request with a list of accession ids (comma-separated) and the REST endpoint will return a map with accession_id &rarr; list of phenotypes.
                         <br>
                         Example (cURL): <code>curl --request POST --url http://arapheno.1001genomes.org/rest/accession/phenotypes/ --header 'content-type: text/plain' --data '9434,6073'</code>
                         <br><br>
-                        The response will contain a JSON dict with the information in following format:
+                        The response will contain a JSON dict with the following format:
                         </p>
                         <pre>
     {
@@ -217,9 +217,9 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">code</i>How to retrive phenotype correlations via REST?</div>
+                        <div class="collapsible-header"><i class="material-icons">code</i>How to retrieve phenotype correlations via REST?</div>
                         <div class="collapsible-body"><p>You can use the following URL to compute phenotype-phenotype correlations.
-                        Just replace &lt;query&gt; with a comma sperated list oh phenotype ids. Note, that for this query we only support JSON as output format.
+                        Just replace &lt;query&gt; with a comma-separated list of phenotype ids. Note that for this query we only support JSON as output format.
                         <br><br>
                         <strong>http://arapheno.1001genomes.org/rest/correlation/&lt;query&gt;/</strong>
                         <br><br>
@@ -232,7 +232,7 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">code</i>How to submit your study via REST?</div>
                         <div class="collapsible-body"><p>You can submit a study by sending a <code>POST</code> request containing the study file in ISA-TAB or PLINK format
-                        and additional form fields (i.e. firstname. lastname, email) to the following url:
+                        and additional form fields (i.e. firstname, lastname, email) to the following URL:
                         <strong>http://arapheno.1001genomes.org/rest/submission/</strong><br>
                         The response will contain information about the submission (see below)
                         <br><br>
@@ -244,7 +244,7 @@
                     </li>
                    <li>
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get details for a submission?</div>
-                        <div class="collapsible-body"><p>You can use the submission_id to view details such as status and curation about the submission. Just replace &lt;q&gt; with the submission_id:
+                        <div class="collapsible-body"><p>You can use the submission_id to view details such as its status and curation. Just replace &lt;q&gt; with the submission_id:
                         <br><br>
                         <strong>http://arapheno.1001genomes.org/rest/submission/&lt;q&gt;.json</strong>
                         <br><br>

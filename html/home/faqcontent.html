@@ -38,15 +38,15 @@
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">star</i>Which data formats are supported?</div>
-                        <div class="collapsible-body"><p>ArachisPheno supports a variety of different data formats, including CSV, JSON, PLINK and ISA-TAB format.</p></div>
+                        <div class="collapsible-body"><p>ArachisPheno supports a variety of different data formats, including CSV, JSON, PLINK and ISA-TAB.</p></div>
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">star</i>Is it possible to download the phenotype data?</div>
-                        <div class="collapsible-body"><p>Yes phenotype data can be download at the individual phenotype views. You can choose if you like to download the phenotypic meta-information, or the actual phenotype values. For this purpose, you can choose different formats, including CSV, JSON and PLINK.</p></div>
+                        <div class="collapsible-body"><p>Yes, you can download phenotype data at the individual phenotype views. You can download the phenotypic meta-information or the actual phenotype values. For this purpose, you can choose different formats, including CSV, JSON and PLINK.</p></div>
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">star</i>Can I download the full database?</div>
-                        <div class="collapsible-body"><p>Yes, if you click on the <a href='/rest/download' onclick="window.alert('Your download is being prepared, this can take a few seconds. Please click OK.'); return true;">download database</a> link in the home page. This will generate a zip file containing a csv file with a list of the studies (and their details) as well as one folder per study, with the study id as the folder name. Each folder contains information about the study's phenotypes as well as the values both in csv and plink format.</p></div>
+                        <div class="collapsible-body"><p>Yes, click the <a href='/rest/download' onclick="window.alert('Your download is being prepared, this can take a few seconds. Please click OK.'); return true;">download database</a> link in the home page. This will generate a zip file containing a csv file with a list of the studies (and their details) as well as one folder per study, with the study id as the folder name. Each folder contains information about the study&rsquo;s phenotypes as well as the values, both in csv and plink format.</p></div>
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">star</i>Should I upload mean/average values or replicates?</div>
@@ -62,7 +62,7 @@
                         <div class="collapsible-body">
                             <p>
                                 Yes, it is possible to preserve the specific value of each replicate across multiple phenotypes.
-                                In case of PLINK or CSV just repeat the FID (accession_id) multiple times and add a an arbitary number into the IID (replicate_id) column or alternatively leave it empty (it is not used by ArachisPheno).
+                                In the case of PLINK or CSV, just repeat the FID (accession_id) multiple times and add an arbitrary number into the IID (replicate_id) column or alternatively leave it empty (it is not used by ArachisPheno).
                                 <br>For <b>PLINK</b> this should look as follows:
                             </p>
                             <pre>
@@ -86,9 +86,9 @@
                                         6414,           6,    4.2,    9.8
                                 ...
                             </pre>
-                            <p> The main difference between PLINK and CSV is that PLINK uses a space as a delimiter and CSV uses a comma. Addtionally the headers are different.
+                            <p> The main difference between PLINK and CSV is that PLINK uses a space as a delimiter and CSV uses a comma. Additionally the headers are different.
                                 <br><br><b>Empty values are encoded as empty cells in both CSV and PLINK </b>(see pheno1 for accession_id/FID: 6414 and replicate_id/IID: 5)<br><br>
-                                ArachisPheno will create separate replicate values for each accession and make sure that for example replicate <b>1</b> of <b>6909</b> has 24.6 for <b>pheno1</b> and 100.2 for </b>pheno2</b>.<br>
+                                ArachisPheno will create separate replicate values for each accession and make sure that for example replicate <b>1</b> of <b>6909</b> has 24.5 for <b>pheno1</b> and 100.2 for <b>pheno2</b>.<br>
                                 This also works for the ISA-TAB format.
                             </p>
                         </div>
