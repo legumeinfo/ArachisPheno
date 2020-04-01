@@ -15,7 +15,12 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__+ "/../")))
 
+# Load values hidden from GitHub
+from private_settings import *
+
 ADMINS = [('svengato', 'svengato@svengato.com')]
+EMAIL_HOST = 'hardy.lis.ncgr.org'
+EMAIL_PORT = 25
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -144,11 +149,11 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'../static'),]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 GITHUB_URL='https://github.com/legumeinfo/ArachisPheno/commit'
-DATACITE_PREFIX = '10.21958'
+DATACITE_PREFIX = '10.21958' # TODO: this is for AraPheno, change it to ours
 DATACITE_USERNAME = os.environ.get('DATACITE_USERNAME', None)
 DATACITE_PASSWORD = os.environ.get('DATACITE_PASSWORD', None)
 DATACITE_DOI_URL = 'http://search.datacite.org/works'
-DOI_BASE_URL = 'http://arapheno.1001genomes.org' # TODO: should this be PeanutBase?
+DOI_BASE_URL = BASE_URL
 
 
 LOGGING = {
@@ -168,8 +173,7 @@ LOGGING = {
 }
 
 CORS_ORIGIN_WHITELIST = (
-    'http://www.1001genomes.org',
-    'http://aragwas.1001genomes.org',
+    BASE_URL,
     'http://localhost:8000',
     'http://localhost:8080',
     'http://127.0.0.1:8080'

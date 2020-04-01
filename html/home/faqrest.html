@@ -38,9 +38,9 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get a list of all phenotypes?</div>
                         <div class="collapsible-body"><p>You can use one of the following URLs to retrieve a list of phenotypes.
                         <br><br>
-                        <strong>For CSV format: <a href="/rest/phenotype/list.csv">http://arapheno.1001genomes.org/rest/phenotype/list.csv</a></strong>
+                        <strong>For CSV format: <a href="/rest/phenotype/list.csv">&lt;BASE_URL&gt;/rest/phenotype/list.csv</a></strong>
                         <br><br>
-                        <strong>For JSON format: <a href="/rest/phenotype/list.json">http://arapheno.1001genomes.org/rest/phenotype/list.json</a></strong>
+                        <strong>For JSON format: <a href="/rest/phenotype/list.json">&lt;BASE_URL&gt;/rest/phenotype/list.json</a></strong>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -50,11 +50,11 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get details for a certain phenotype?</div>
                         <div class="collapsible-body"><p>You can use either the primary id or DOI to access certain details for a phenotype. Just replace &lt;q&gt; with the phenotype id or DOI.
                         <br><br>
-                        <strong>For CSV format: http://arapheno.1001genomes.org/rest/phenotype/&lt;q&gt;.csv</strong>
+                        <strong>For CSV format: &lt;BASE_URL&gt;/rest/phenotype/&lt;q&gt;.csv</strong>
                         <br><br>
-                        <strong>For JSON format: http://arapheno.1001genomes.org/rest/phenotype/&lt;q&gt;.json</strong>
+                        <strong>For JSON format: &lt;BASE_URL&gt;/rest/phenotype/&lt;q&gt;.json</strong>
                         <br><br>
-                        Example: <a href="/rest/phenotype/1.json">http://arapheno.1001genomes.org/rest/phenotype/1.json</a>
+                        Example: <a href="/rest/phenotype/1.json">&lt;BASE_URL&gt;/rest/phenotype/1.json</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -65,11 +65,11 @@
                         <div class="collapsible-body"><p>You can use either the primary id or DOI to get all phenotype values for a certain phenotype.
                         Just replace &lt;q&gt; with the study id or DOI and extend URL with <strong>/phenotypes</strong> and extend the URL with <strong>/values</strong>
                         <br><br>
-                        <strong>For CSV format: http://arapheno.1001genomes.org/rest/phenotype/&lt;q&gt;/values.csv</strong>
+                        <strong>For CSV format: &lt;BASE_URL&gt;/rest/phenotype/&lt;q&gt;/values.csv</strong>
                         <br><br>
-                        <strong>For JSON format: http://arapheno.1001genomes.org/rest/phenotype/&lt;q&gt;/values.json</strong>
+                        <strong>For JSON format: &lt;BASE_URL&gt;/rest/phenotype/&lt;q&gt;/values.json</strong>
                         <br><br>
-                        Example: <a href="/rest/phenotype/1/values.json">http://arapheno.1001genomes.org/rest/phenotype/1/values.json</a>
+                        Example: <a href="/rest/phenotype/1/values.json">&lt;BASE_URL&gt;/rest/phenotype/1/values.json</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -80,14 +80,14 @@
                             <div class="collapsible-body"><p>You can use either the primary id or DOI to get transformed phenotype values for a certain phenotype.
                             Just replace &lt;q&gt; with the phenotype id or DOI. This will return transformed phenotype values for all transformations (sqrt, Box-Cox, log)
                             <br><br>
-                            <strong>For CSV format: http://arapheno.1001genomes.org/rest/phenotype/&lt;q&gt;/transformations.csv</strong>
+                            <strong>For CSV format: &lt;BASE_URL&gt;/rest/phenotype/&lt;q&gt;/transformations.csv</strong>
                             <br><br>
-                            <strong>For JSON format: http://arapheno.1001genomes.org/rest/phenotype/&lt;q&gt;/transformations.json</strong>
+                            <strong>For JSON format: &lt;BASE_URL&gt;/rest/phenotype/&lt;q&gt;/transformations.json</strong>
                             <br><br>
-                            Example: <a href="/rest/phenotype/1/transformations.json">http://arapheno.1001genomes.org/rest/phenotype/1/transformations.json</a>
+                            Example: <a href="/rest/phenotype/1/transformations.json">&lt;BASE_URL&gt;/rest/phenotype/1/transformations.json</a>
                             <br><br>
                             It is also possible to retrieve the transformed phenotype values for a specific transformation by extending the URL with the desired transformation name:
-                            <a href="/rest/phenotype/1/transformations/box_cox.json">http://arapheno.1001genomes.org/rest/phenotype/1/transformations/box_cox.json</a>
+                            <a href="/rest/phenotype/1/transformations/box_cox.json">&lt;BASE_URL&gt;/rest/phenotype/1/transformations/box_cox.json</a>
                             <br><br>
                             A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                             </p>
@@ -97,9 +97,9 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get a list of all studies?</div>
                         <div class="collapsible-body"><p>You can use one of the following URL to retrieve a list of studies.
                         <br><br>
-                        <strong>For CSV format: <a href="/rest/study/list.csv">http://arapheno.1001genomes.org/rest/study/list.csv</a></strong>
+                        <strong>For CSV format: <a href="/rest/study/list.csv">&lt;BASE_URL&gt;/rest/study/list.csv</a></strong>
                         <br><br>
-                        <strong>For JSON format: <a href="/rest/study/list.json">http://arapheno.1001genomes.org/rest/study/list.json</a></strong>
+                        <strong>For JSON format: <a href="/rest/study/list.json">&lt;BASE_URL&gt;/rest/study/list.json</a></strong>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -109,11 +109,11 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get details for a certain study?</div>
                         <div class="collapsible-body"><p>You can use either the primary id or DOI to access certain details for a study. Just replace &lt;q&gt; with the study id or DOI.
                         <br><br>
-                        <strong>For CSV format: http://arapheno.1001genomes.org/rest/study/&lt;q&gt;.csv</strong>
+                        <strong>For CSV format: &lt;BASE_URL&gt;/rest/study/&lt;q&gt;.csv</strong>
                         <br><br>
-                        <strong>For JSON format: http://arapheno.1001genomes.org/rest/study/&lt;q&gt;.json</strong>
+                        <strong>For JSON format: &lt;BASE_URL&gt;/rest/study/&lt;q&gt;.json</strong>
                         <br><br>
-                        Example: <a href="/rest/study/1.json">http://arapheno.1001genomes.org/rest/study/1.json</a>
+                        Example: <a href="/rest/study/1.json">&lt;BASE_URL&gt;/rest/study/1.json</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -124,11 +124,11 @@
                         <div class="collapsible-body"><p>You can use either the primary id or DOI to access a list of all phenotypes for a study.
                         Just replace &lt;q&gt; with the study id or DOI and extend URL with <strong>/phenotypes</strong>.
                         <br><br>
-                        <strong>For CSV format: http://arapheno.1001genomes.org/rest/study/&lt;q&gt;/phenotypes.csv</strong>
+                        <strong>For CSV format: &lt;BASE_URL&gt;/rest/study/&lt;q&gt;/phenotypes.csv</strong>
                         <br><br>
-                        <strong>For JSON format: http://arapheno.1001genomes.org/rest/study/&lt;q&gt;/phenotypes.json</strong>
+                        <strong>For JSON format: &lt;BASE_URL&gt;/rest/study/&lt;q&gt;/phenotypes.json</strong>
                         <br><br>
-                        Example: <a href="/rest/study/1/phenotypes.json">http://arapheno.1001genomes.org/rest/study/1/phenotypes.json</a>
+                        Example: <a href="/rest/study/1/phenotypes.json">&lt;BASE_URL&gt;/rest/study/1/phenotypes.json</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -138,9 +138,9 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get a list of all accessions?</div>
                         <div class="collapsible-body"><p>You can use one of the following URL to retrieve a list of accessions.
                         <br><br>
-                        <strong>For CSV format: <a href="/rest/accession/list.csv">http://arapheno.1001genomes.org/rest/accession/list.csv</a></strong>
+                        <strong>For CSV format: <a href="/rest/accession/list.csv">&lt;BASE_URL&gt;/rest/accession/list.csv</a></strong>
                         <br><br>
-                        <strong>For JSON format: <a href="/rest/accession/list.json">http://arapheno.1001genomes.org/rest/accession/list.json</a></strong>
+                        <strong>For JSON format: <a href="/rest/accession/list.json">&lt;BASE_URL&gt;/rest/accession/list.json</a></strong>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -150,11 +150,11 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get details for a certain accession?</div>
                         <div class="collapsible-body"><p>You can use the accession id to access certain details for an accession. Just replace &lt;q&gt; with the accession id.
                         <br><br>
-                        <strong>For CSV format: http://arapheno.1001genomes.org/rest/accession/&lt;q&gt;.csv</strong>
+                        <strong>For CSV format: &lt;BASE_URL&gt;/rest/accession/&lt;q&gt;.csv</strong>
                         <br><br>
-                        <strong>For JSON format: http://arapheno.1001genomes.org/rest/accession/&lt;q&gt;.json</strong>
+                        <strong>For JSON format: &lt;BASE_URL&gt;/rest/accession/&lt;q&gt;.json</strong>
                         <br><br>
-                        Example: <a href="/rest/accession/6074.json">http://arapheno.1001genomes.org/accession/study/6074.json</a>
+                        Example: <a href="/rest/accession/6074.json">&lt;BASE_URL&gt;/accession/study/6074.json</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -165,11 +165,11 @@
                         <div class="collapsible-body"><p>You can use the accession id to access a list of all phenotypes for this accession.
                         Just replace &lt;q&gt; with the accession id and extend URL with <strong>/phenotypes</strong>.
                         <br><br>
-                        <strong>For CSV format: http://arapheno.1001genomes.org/rest/accession/&lt;q&gt;/phenotypes.csv</strong>
+                        <strong>For CSV format: &lt;BASE_URL&gt;/rest/accession/&lt;q&gt;/phenotypes.csv</strong>
                         <br><br>
-                        <strong>For JSON format: http://arapheno.1001genomes.org/rest/accession/&lt;q&gt;/phenotypes.json</strong>
+                        <strong>For JSON format: &lt;BASE_URL&gt;/rest/accession/&lt;q&gt;/phenotypes.json</strong>
                         <br><br>
-                        Example: <a href="/rest/accession/6074/phenotypes.json">http://arapheno.1001genomes.org/rest/accession/6074/phenotypes.json</a>
+                        Example: <a href="/rest/accession/6074/phenotypes.json">&lt;BASE_URL&gt;/rest/accession/6074/phenotypes.json</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -179,7 +179,7 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get all phenotypes for a list of accessions?</div>
                         <div class="collapsible-body"><p>You send a <code>POST</code> request with a list of accession ids (comma-separated) and the REST endpoint will return a map with accession_id &rarr; list of phenotypes.
                         <br>
-                        Example (cURL): <code>curl --request POST --url http://arapheno.1001genomes.org/rest/accession/phenotypes/ --header 'content-type: text/plain' --data '9434,6073'</code>
+                        Example (cURL): <code>curl --request POST --url &lt;BASE_URL&gt;/rest/accession/phenotypes/ --header 'content-type: text/plain' --data '9434,6073'</code>
                         <br><br>
                         The response will contain a JSON dict with the following format:
                         </p>
@@ -206,11 +206,11 @@
                         <div class="collapsible-body"><p>You can use the following URL to perform a search.
                         Just replace &lt;query&gt; with your search query (e.g. with a phenotype name). If the search query is empty you will get a list with all phenotypes and studies.
                         <br><br>
-                        <strong>For CSV format: http://arapheno.1001genomes.org/rest/search/&lt;query&gt;.csv</strong>
+                        <strong>For CSV format: &lt;BASE_URL&gt;/rest/search/&lt;query&gt;.csv</strong>
                         <br><br>
-                        <strong>For JSON format: http://arapheno.1001genomes.org/rest/search/&lt;query&gt;.json</strong>
+                        <strong>For JSON format: &lt;BASE_URL&gt;/rest/search/&lt;query&gt;.json</strong>
                         <br><br>
-                        Example: <a href="/rest/search/at.json">http://arapheno.1001genomes.org/rest/search/at.json</a>
+                        Example: <a href="/rest/search/at.json">&lt;BASE_URL&gt;/rest/search/at.json</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -221,9 +221,9 @@
                         <div class="collapsible-body"><p>You can use the following URL to compute phenotype-phenotype correlations.
                         Just replace &lt;query&gt; with a comma-separated list of phenotype ids. Note that for this query we only support JSON as output format.
                         <br><br>
-                        <strong>http://arapheno.1001genomes.org/rest/correlation/&lt;query&gt;/</strong>
+                        <strong>&lt;BASE_URL&gt;/rest/correlation/&lt;query&gt;/</strong>
                         <br><br>
-                        Example: <a href="/rest/correlation/6,29,30,31,49,102,99,53,86,39/">http://arapheno.1001genomes.org/rest/correlation/6,29,30,31,49,102,99,53,86,39/</a>
+                        Example: <a href="/rest/correlation/6,29,30,31,49,102,99,53,86,39/">&lt;BASE_URL&gt;/rest/correlation/6,29,30,31,49,102,99,53,86,39/</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -233,10 +233,10 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to submit your study via REST?</div>
                         <div class="collapsible-body"><p>You can submit a study by sending a <code>POST</code> request containing the study file in ISA-TAB or PLINK format
                         and additional form fields (i.e. firstname, lastname, email) to the following URL:
-                        <strong>http://arapheno.1001genomes.org/rest/submission/</strong><br>
+                        <strong>&lt;BASE_URL&gt;/rest/submission/</strong><br>
                         The response will contain information about the submission (see below)
                         <br><br>
-                        Example (cURL): <code>curl -X POST -H "Cache-Control: no-cache" -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" -F "file=@" -F "firstname=John" -F "lastname=Doe" -F "email=john@doe.com" "http://arapheno.1001genomes.org/rest/submission/"</code>
+                        Example (cURL): <code>curl -X POST -H "Cache-Control: no-cache" -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" -F "file=@" -F "firstname=John" -F "lastname=Doe" -F "email=john@doe.com" "&lt;BASE_URL&gt;/rest/submission/"</code>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -246,7 +246,7 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get details for a submission?</div>
                         <div class="collapsible-body"><p>You can use the submission_id to view details such as its status and curation. Just replace &lt;q&gt; with the submission_id:
                         <br><br>
-                        <strong>http://arapheno.1001genomes.org/rest/submission/&lt;q&gt;.json</strong>
+                        <strong>&lt;BASE_URL&gt;/rest/submission/&lt;q&gt;.json</strong>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -256,9 +256,9 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to delete a submission?</div>
                         <div class="collapsible-body"><p>You can use the submission_id to delete by sending a <code>DELETE</code> request. Just replace &lt;q&gt; with the submission_id:
                         <br><br>
-                        <strong>http://arapheno.1001genomes.org/rest/submission/&lt;q&gt;/delete</strong>
+                        <strong>&lt;BASE_URL&gt;/rest/submission/&lt;q&gt;/delete</strong>
                         <br><br>
-                        Example (cURL): <code>curl -X DELETE -H "Cache-Control: no-cache" "http://arapheno.1001genomes.org/rest/submission/[SUBMISSION_ID]/delete"</code>
+                        Example (cURL): <code>curl -X DELETE -H "Cache-Control: no-cache" "&lt;BASE_URL&gt;/rest/submission/[SUBMISSION_ID]/delete"</code>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>

@@ -1,4 +1,4 @@
-"""arapheno URL Configuration
+"""ArachisPheno URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -25,7 +25,7 @@ from django.views.decorators.csrf import csrf_exempt
 from utils.statistics import SUPPORTED_TRANSFORMATIONS
 admin.autodiscover()
 al.autodiscover()
-schema_view = get_swagger_view(title='AraPheno API')
+schema_view = get_swagger_view(title='ArachisPheno API')
 
 ID_REGEX = r"[0-9]+"
 REGEX_STUDY = ID_REGEX + "|" + rest.DOI_REGEX_STUDY

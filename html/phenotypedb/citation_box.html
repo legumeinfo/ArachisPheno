@@ -29,7 +29,7 @@ doi:{{ p.doi }}
 {{ submission.publisher }}. ({{ submission.publication_date|date:"Y" }}). {{ citation.name }}. doi:{{ citation.doi }}
 </pre>
                 </div>
-                <div class="divider"></div>
+                <!--div class="divider"></div>
                 <div class="section">
                     <h5>ArachisPheno</h5>
                     <pre>
@@ -44,7 +44,7 @@ AraPheno: a public database for Arabidopsis thaliana phenotypes,
 Nucleic Acids Research, Volume 45, Issue D1, January 2017, Pages D1054–D1059,
 https://doi.org/10.1093/nar/gkw986
                     </pre>
-                </div>
+                </div-->
             </div>
             <div id="bibtex" class="col s12">
               <div class="divider"></div>
@@ -70,7 +70,7 @@ https://doi.org/10.1093/nar/gkw986
                     <pre>
 @misc{https://doi.org/{{ citation.doi }},
     doi = {{ '{' }}{{ citation.doi }}{{ '}' }},
-    url = {{ '{' }}http://arapheno.1001genomes.org/{{ type }}/{{ citation.id }}{{ '}' }},
+    url = {{ '{' }}http://&lt;BASE_URL&gt;/{{ type }}/{{ citation.id }}{{ '}' }},
     author = {{ '{' }}{{ submission.publisher }}{{ '}' }},
     language = {en-us},
     title = {{ '{' }}{{ citation.name }}{{ '}' }},
@@ -79,7 +79,7 @@ https://doi.org/10.1093/nar/gkw986
 }
                     </pre>
                 </div>
-                <div class="divider"></div>
+                <!--div class="divider"></div>
                 <div class="section">
                     <h5>ArachisPheno</h5>
                     <pre>
@@ -102,7 +102,7 @@ https://doi.org/10.1093/nar/gkw986
     pages = {D1054–D1059}
 }
                     </pre>
-                </div>
+                </div-->
             </div>
             <div id="ris" class="col s12">
               <div class="divider"></div>
@@ -132,12 +132,12 @@ AU  - {{ submission.publisher }}
 T1  - {{ citation.name }}
 LA  - eng
 PY  - {{ submission.publication_date|date:"Y" }}
-UR  - http://arapheno.1001genomes.org/{{ type }}/{{ citation.id }}
+UR  - http://&lt;BASE_URL&gt;/{{ type }}/{{ citation.id }}
 DO  - {{ citation.doi }}
 PB  - {{ submission.publisher }}
                     </pre>
                 </div>
-                <div class="divider"></div>
+                <!--div class="divider"></div>
                 <div class="section">
                     <h5>ArachisPheno</h5>
                     <pre>
@@ -176,7 +176,7 @@ PY  - 2017
 DO  - 10.1093/nar/gkw986
 JF  - Nucleic acids research
                     </pre>
-                </div>
+                </div-->
             </div>
         </div>
     </div>
