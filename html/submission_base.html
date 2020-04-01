@@ -17,7 +17,7 @@
             <h4 >Hi {{ submission.firstname }} {{ submission.lastname }}</h4>
             <p class="flow-text">
                 You submitted your "{{ submission.study.name }}" study on {{ submission.submission_date }}.
-                It is currently being under revision. If there are any missing information,
+                It is currently under revision. If there is any missing information,
                 we will send a notification and you will be able to update the missing information on this page.
             </p>
             <div class="col s6">
@@ -32,7 +32,7 @@
                 </ul>
             </div>
             <div class="col s6 flow-text">
-                <h5>Reviewers Comments</h5>
+                <h5>Reviewer&rsquo;s Comments</h5>
                 <div>Status:
                     {% if submission.status != 0 and object.curation %}
                         {% if object.curation.correct %}

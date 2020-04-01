@@ -170,7 +170,7 @@ class CurationPhenotypeTable(tables.Table):
     """
     name = tables.LinkColumn("submission_phenotype_result", args=[A('study.submission.id'), A('id')], text=lambda record: record.name, verbose_name="Phenotype Name", order_by="name")
     to = tables.Column(accessor="to_term.name", verbose_name="Trait Ontology (TO)", order_by="to_term.name")
-    eo = tables.Column(accessor="eo_term.name", verbose_name="Environmental Ontoloy (EO)", order_by="eo_term.name")
+    eo = tables.Column(accessor="eo_term.name", verbose_name="Environmental Ontology (EO)", order_by="eo_term.name")
     uo = tables.Column(accessor="uo_term.name", verbose_name="Unit Ontology (UO)", order_by="uo_term.name")
     status = StatusColumn(accessor="curation_status",verbose_name="Status")
 
