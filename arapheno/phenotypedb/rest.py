@@ -716,10 +716,10 @@ def submit_study(request,format=None):
                 email = EmailMessage(
                     submission.get_email_subject(),
                     submission.get_email_text(),
-                    'uemit.seren@gmi.oeaw.ac.at',
+                    settings.EMAIL_ADDRESS,
                     [submission.email],
                     [settings.ADMINS[0][1]],
-                    reply_to=['uemit.seren@gmi.oeaw.ac.at']
+                    reply_to=[settings.EMAIL_ADDRESS]
                 )
                 email.send(True)
                 serializer = SubmissionDetailSerializer(submission,many=False,context={'request': request})
@@ -818,8 +818,8 @@ def generate_database_dump():
     Generate an archive of the full database
     """
     # create temorary folder
-    arapheno_filename = "database"
-    output_filename = os.path.join(settings.STATIC_ROOT, '%s.zip' % arapheno_filename)
+    arachispheno_filename = "database"
+    output_filename = os.path.join(settings.STATIC_ROOT, '%s.zip' % arachispheno_filename)
 
     folder = tempfile.mkdtemp()
 
@@ -836,7 +836,7 @@ def generate_database_dump():
     _create_phenotypes_files(studies, folder)
 
     # zip it
-    output_filename = shutil.make_archive(arapheno_filename,"zip",folder)
+    output_filename = shutil.make_archive(arachispheno_filename,"zip",folder)
     shutil.move(output_filename, os.path.join(settings.STATIC_ROOT, os.path.basename(output_filename)))
 
     # remove temporary folder

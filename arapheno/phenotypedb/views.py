@@ -1,5 +1,5 @@
 """
-View definitions for AraPheno
+View definitions for ArachisPheno
 """
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -371,10 +371,10 @@ def upload_file(request):
                 email = EmailMessage(
                     submission.get_email_subject(),
                     submission.get_email_text(),
-                    'uemit.seren@gmi.oeaw.ac.at',
+                    settings.EMAIL_ADDRESS,
                     [submission.email],
                     [settings.ADMINS[0][1]],
-                    reply_to=['uemit.seren@gmi.oeaw.ac.at']
+                    reply_to=[settings.EMAIL_ADDRESS]
                 )
                 email.send(True)
                 return HttpResponseRedirect('/submission/%s/' % submission.id)
@@ -400,12 +400,12 @@ def submit_feedback(request):
                 from_email = form.cleaned_data['email']
                 message = form.cleaned_data['message']
                 email = EmailMessage(
-                    subject='AraPheno-Feedback',
+                    subject='ArachisPheno-Feedback',
                     from_email=from_email,
-                    to=['uemit.seren@gmi.oeaw.ac.at'],
+                    to=[settings.EMAIL_ADDRESS],
                     body=message,
                     bcc=[settings.ADMINS[0][1]],
-                    reply_to=['uemit.seren@gmi.oeaw.ac.at']
+                    reply_to=[settings.EMAIL_ADDRESS]
                 )
                 email.send(True)
                 return HttpResponseRedirect('/feedback/success/')

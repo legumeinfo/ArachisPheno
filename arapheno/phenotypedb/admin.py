@@ -32,10 +32,10 @@ class SubmissionAdmin(admin.ModelAdmin):
             email = EmailMessage(
                     obj.get_email_subject(),
                     obj.get_email_text(),
-                    'uemit.seren@gmi.oeaw.ac.at',
+                    settings.EMAIL_ADDRESS,
                     [obj.email],
                     [settings.ADMINS[0][1]],
-                    reply_to=['uemit.seren@gmi.oeaw.ac.at']
+                    reply_to=[settings.EMAIL_ADDRESS]
                 )
             email.send(True)
 
