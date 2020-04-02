@@ -136,7 +136,7 @@ class Study(models.Model):
 
     def value_as_dataframe(self, kind='phenotype'):
         """
-        Returns the PhenotypValue records for this study as a pandas dataframe
+        Returns the PhenotypeValue records for this study as a pandas dataframe
         """
         cursor = connection.cursor()
         if kind == 'phenotype':
@@ -295,7 +295,7 @@ class Submission(models.Model):
             If there are issues (missing information), we will contact you.
 
             You can follow the curation process at this URL:
-            http://%(submission_url)s/%(submission_id)s
+            %(submission_url)s/%(submission_id)s
 
             Thank you for your patience,
 
@@ -309,7 +309,7 @@ class Submission(models.Model):
 
             Curators have requested changes to your "%(study_name)s" study.
             Please check the requested changes and update the missing/incomplete fields at this URL:
-            http://%(submission_url)s/%(submission_id)s
+            %(submission_url)s/%(submission_id)s
 
             Thank you for your patience,
 
@@ -323,7 +323,7 @@ class Submission(models.Model):
 
             Your "%(study_name)s" study has been successfully curated and we are happy to inform you
             that the study is now publicly available at this URL:
-            http://%(study_url)s/%(study_id)s
+            %(study_url)s/%(study_id)s
 
             Thank you for your submission,
 
@@ -381,7 +381,7 @@ class Genotype(models.Model):
 class ObservationUnit(models.Model):
     """
     Observational unit model
-    Physical plant. This is connected to both the Accession as well as the Study
+    Physical plant. This is connected to both the Accession and the Study
     """
     accession = models.ForeignKey('Accession')
     study = models.ForeignKey('Study')
@@ -390,7 +390,7 @@ class ObservationUnit(models.Model):
 class PhenotypeValue(models.Model):
     """
     PhenotypeValue model
-    The indivudal phenotype values. Connected to Phenotype and ObservationUnit
+    The individual phenotype values. Connected to Phenotype and ObservationUnit
     """
     value = models.FloatField()
     phenotype = models.ForeignKey('Phenotype')
@@ -398,7 +398,7 @@ class PhenotypeValue(models.Model):
 
 class PhenotypeQuerySet(models.QuerySet):
     """
-    Custom QuerySet for Phenotype querires
+    Custom QuerySet for Phenotype queries
     """
     def published(self):
         """
