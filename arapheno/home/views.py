@@ -11,7 +11,7 @@ from django.db.models import Count
 from django_tables2 import RequestConfig
 
 '''
-Home View of AraPheno
+Home View of ArachisPheno
 '''
 def home(request):
     search_form = GlobalSearchForm()
@@ -23,7 +23,10 @@ def home(request):
     stats['studies'] = studies.filter(pheno_count__gt=0).filter(rna_count=0).count()
     stats['phenotypes_published'] = Phenotype.objects.published().count()
     stats['phenotypes'] = Phenotype.objects.all().count()
-    stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b/%d/%Y')
+    if len(Study.objects.all()) == 0 :
+        stats['last_update'] = '--'
+    else :
+        stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b/%d/%Y')
     return render(request,'home/home.html',{"search_form":search_form,"stats":stats, 'is_rnaseq': False})
 
 def home_rnaseq(request):
@@ -36,17 +39,20 @@ def home_rnaseq(request):
     studies = Study.objects.published().annotate(pheno_count=Count('phenotype')).annotate(rna_count=Count('rnaseq'))
     stats['studies'] = studies.filter(pheno_count=0).filter(rna_count__gt=0).count()
     stats['rnaseqs'] = RNASeq.objects.all().count()
-    stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b/%d/%Y')
+    if len(Study.objects.all()) == 0 :
+        stats['last_update'] = '--'
+    else :
+        stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b/%d/%Y')
     return render(request,'home/home_rnaseq.html',{"search_form":search_form,"stats":stats, 'is_rnaseq': True})
 
 '''
-About Information View of AraPheno
+About View of ArachisPheno
 '''
 def about(request):
     return render(request,'home/about.html',{})
 
 '''
-Links View of AraPheno
+Links View of ArachisPheno
 '''
 def links(request):
     return render(request,'home/links.html',{})
@@ -88,7 +94,7 @@ def faqissue(request):
     return render(request,'home/faqissue.html',{})
 
 '''
-Search Result View for Global Search in AraPheno
+Search Result View for Global Search in ArachisPheno
 '''
 def SearchResults(request,query=None):
     if query==None:
