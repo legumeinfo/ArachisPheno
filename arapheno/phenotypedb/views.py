@@ -34,7 +34,7 @@ def list_phenotypes(request):
     """
     Displays table of all published phenotypes
     """
-    table = PhenotypeTable(Phenotype.objects.annotate(num_values=Count('phenotypevalue')).published(), order_by="-name")
+    table = PhenotypeTable(Phenotype.objects.annotate(num_values=Count('phenotypevalue')).published(), order_by="name")
     RequestConfig(request, paginate={"per_page":20}).configure(table)
     return render(request, 'phenotypedb/phenotype_list.html', {"phenotype_table":table})
 
@@ -42,7 +42,7 @@ def list_rnaseqs(request):
     """
     Displays table of all published RNASeq
     """
-    table = RNASeqTable(RNASeq.objects.all(), order_by="-name")
+    table = RNASeqTable(RNASeq.objects.all(), order_by="name")
     RequestConfig(request, paginate={"per_page":50}).configure(table)
     return render(request, 'phenotypedb/rnaseq_data_list.html', {"rnaseq_table":table, 'is_rnaseq': True})
 
@@ -54,7 +54,7 @@ def list_rnaseq_studies(request):
     # studies = Study.objects.filter(phenotype__count=0)
     studies = Study.objects.annotate(pheno_count=Count('phenotype')).annotate(rna_count=Count('rnaseq'))
     studies = studies.filter(pheno_count=0).filter(rna_count__gt=0)
-    table = RNASeqStudyTable(studies, order_by="-name")
+    table = RNASeqStudyTable(studies, order_by="name")
     RequestConfig(request, paginate={"per_page":50}).configure(table)
     return render(request, 'phenotypedb/rnaseq_study_list.html', {"study_table":table, 'is_rnaseq': True})
 
@@ -106,9 +106,9 @@ def detail_study(request, pk=None):
     # Check if RNASeq or Phenotypes:
     is_rnaseq = False
     if len(Phenotype.objects.published().filter(study__id=pk)) > 0:
-        phenotype_table = ReducedPhenotypeTable(Phenotype.objects.published().filter(study__id=pk), order_by="-name")
+        phenotype_table = ReducedPhenotypeTable(Phenotype.objects.published().filter(study__id=pk), order_by="name")
     else:
-        phenotype_table = RNASeqTable(RNASeq.objects.filter(study__id=pk), order_by="-name")
+        phenotype_table = RNASeqTable(RNASeq.objects.filter(study__id=pk), order_by="name")
         is_rnaseq = True
     RequestConfig(request, paginate={"per_page":20}).configure(phenotype_table)
     variable_dict = {}
@@ -177,7 +177,7 @@ def list_accessions(request):
     else:
         accessions = Accession.objects.annotate(count_phenotypes=Count('observationunit__phenotypevalue__phenotype', distinct=True)).prefetch_related('genotype_set').all()
 
-    table = AccessionTable(accessions, order_by="-name")
+    table = AccessionTable(accessions, order_by="name")
     genotypes = Genotype.objects.all()
     for genotype in genotypes:
         genotype.selected = genotype.pk in filtered_genotypes
@@ -239,7 +239,7 @@ def detail_ontology_term(request,pk=None):
             kwargs = {db_field:sub}
             phenotypes.extend(Phenotype.objects.published().filter(**kwargs))
     variable_dict['phenotype_count'] = len(phenotypes)
-    phenotype_table = PhenotypeTable(phenotypes, order_by="-name")
+    phenotype_table = PhenotypeTable(phenotypes, order_by="name")
     RequestConfig(request, paginate={"per_page":20}).configure(phenotype_table)
     variable_dict["phenotype_table"] = phenotype_table
     return render(request, 'phenotypedb/ontologyterm_detail.html', variable_dict)
@@ -324,7 +324,7 @@ class SubmissionStudyResult(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(SubmissionStudyResult, self).get_context_data(**kwargs)
-        phenotype_table = CurationPhenotypeTable(Phenotype.objects.in_submission().filter(study__id=self.object.id), order_by="-name")
+        phenotype_table = CurationPhenotypeTable(Phenotype.objects.in_submission().filter(study__id=self.object.id), order_by="name")
         RequestConfig(self.request, paginate={"per_page":20}).configure(phenotype_table)
         context['curation_phenotype_table'] = phenotype_table
         context['submission'] = self.object.submission

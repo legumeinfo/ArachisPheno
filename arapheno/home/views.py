@@ -88,7 +88,7 @@ def faqcite(request):
     return render(request,'home/faqcite.html',{})
 
 '''
-FAQ IssUE Content View of AraPhen
+FAQ IssUE Content View of ArachisPheno
 '''
 def faqissue(request):
     return render(request,'home/faqissue.html',{})
@@ -112,16 +112,16 @@ def SearchResults(request,query=None):
         ontologies = OntologyTerm.objects.filter(name__icontains=query)
         download_url = "/rest/search/" + str(query)
 
-    phenotype_table = PhenotypeTable(phenotypes,order_by="-name")
+    phenotype_table = PhenotypeTable(phenotypes,order_by="name")
     RequestConfig(request,paginate={"per_page":10}).configure(phenotype_table)
 
-    study_table = StudyTable(studies,order_by="-name")
+    study_table = StudyTable(studies,order_by="name")
     RequestConfig(request,paginate={"per_page":10}).configure(study_table)
 
-    accession_table = AccessionTable(accessions,order_by="-name")
+    accession_table = AccessionTable(accessions,order_by="name")
     RequestConfig(request,paginate={"per_page":10}).configure(accession_table)
 
-    ontologies_table = OntologyTermTable(ontologies,order_by="-name")
+    ontologies_table = OntologyTermTable(ontologies,order_by="name")
     RequestConfig(request,paginate={"per_page":10}).configure(ontologies_table)
 
     variable_dict = {}
@@ -155,13 +155,13 @@ def SearchResultsRNASeq(request,query=None):
         accessions = Accession.objects.filter(name__icontains=query)
         download_url = "/rest/rnaseq_search/" + str(query)
 
-    rnaseq_table = RNASeqTable(rnaseqs,order_by="-name")
+    rnaseq_table = RNASeqTable(rnaseqs,order_by="name")
     RequestConfig(request,paginate={"per_page":10}).configure(rnaseq_table)
 
-    study_table = RNASeqStudyTable(studies,order_by="-name")
+    study_table = RNASeqStudyTable(studies,order_by="name")
     RequestConfig(request,paginate={"per_page":10}).configure(study_table)
 
-    accession_table = AccessionTable(accessions,order_by="-name")
+    accession_table = AccessionTable(accessions,order_by="name")
     RequestConfig(request,paginate={"per_page":10}).configure(accession_table)
 
     variable_dict = {}
