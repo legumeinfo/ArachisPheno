@@ -55,7 +55,7 @@ def parseAccessionFile(filename=None, species=1):
             raise Exception('header must be of form %s' % header)
         for row in reader:
             accession = AccessionClass()
-            accession.id = int(row[0])
+            accession.id = row[0]
             accession.name = row[1]
             accession.country = row[2]
             accession.sitename = row[3]

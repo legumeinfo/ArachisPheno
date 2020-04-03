@@ -27,6 +27,7 @@ admin.autodiscover()
 al.autodiscover()
 schema_view = get_swagger_view(title='ArachisPheno API')
 
+ACCESSION_ID_REGEX = r".+"
 ID_REGEX = r"[0-9]+"
 REGEX_STUDY = ID_REGEX + "|" + rest.DOI_REGEX_STUDY
 REGEX_PHENOTYPE = ID_REGEX + "|" + rest.DOI_REGEX_PHENOTYPE
@@ -54,7 +55,7 @@ urlpatterns = [
     url(r'^phenotype/(?P<pk>%s)/$' % ID_REGEX, phenotypedb.views.PhenotypeDetail.as_view(), name="phenotype_detail"),
     url(r'^studies/$', phenotypedb.views.list_studies, name="studies"),
     url(r'^accessions/$', phenotypedb.views.list_accessions, name="accessions"),
-    url(r'^accession/(?P<pk>%s)/$' % ID_REGEX, phenotypedb.views.detail_accession, name="accession_detail"),
+    url(r'^accession/(?P<pk>%s)/$' % ACCESSION_ID_REGEX, phenotypedb.views.detail_accession, name="accession_detail"),
     url(r'^study/(?P<pk>%s)/$' % ID_REGEX, phenotypedb.views.detail_study, name="study_detail"),
     url(r'^study/(?P<pk>%s)/doi$' % ID_REGEX, phenotypedb.views.add_doi, name="add_doi"),
     url(r'^ontology/$', phenotypedb.views.list_ontology_sources,name="ontologysource_list"),
@@ -138,9 +139,9 @@ restpatterns = [
 
     url(r'^rest/accession/phenotypes/$', rest.accessions_phenotypes),
 
-    url(r'^rest/accession/(?P<pk>%s)/$'% ID_REGEX, rest.accession_detail),
+    url(r'^rest/accession/(?P<pk>%s)/$'% ACCESSION_ID_REGEX, rest.accession_detail),
 
-    url(r'^rest/accession/(?P<pk>%s)/phenotypes/$' % ID_REGEX, rest.accession_phenotypes),
+    url(r'^rest/accession/(?P<pk>%s)/phenotypes/$' % ACCESSION_ID_REGEX, rest.accession_phenotypes),
 
     url(r'rest/submission/$', rest.submit_study),
 

@@ -340,6 +340,7 @@ class Accession(models.Model):
     """
     Accession models
     """
+    id = models.CharField(max_length=255, primary_key=True) # accession id
     name = models.CharField(max_length=255, db_index=True, blank=True, null=True) #accession name if available
     country = models.CharField(max_length=255, blank=True, null=True) #country of accession if available
     sitename = models.TextField(blank=True, null=True) #name of site if available
