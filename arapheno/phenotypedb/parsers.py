@@ -9,7 +9,7 @@ class AccessionTextParser(BaseParser):
 
     def parse(self, stream, media_type=None, parser_context=None):
         """
-        Return a list of accesion ids
+        Return a list of accession ids
         """
         accession_ids = []
         body=stream.read()
@@ -19,7 +19,7 @@ class AccessionTextParser(BaseParser):
             parts = body.split(',')
 
         for accession_id in parts:
-            accession_ids.append(int(accession_id))
+            accession_ids.append(accession_id)
 
         return accession_ids
 

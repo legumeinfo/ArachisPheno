@@ -27,7 +27,7 @@ admin.autodiscover()
 al.autodiscover()
 schema_view = get_swagger_view(title='ArachisPheno API')
 
-ACCESSION_ID_REGEX = r".+"
+ACCESSION_ID_REGEX = r"PI[0-9]{6}"
 ID_REGEX = r"[0-9]+"
 REGEX_STUDY = ID_REGEX + "|" + rest.DOI_REGEX_STUDY
 REGEX_PHENOTYPE = ID_REGEX + "|" + rest.DOI_REGEX_PHENOTYPE

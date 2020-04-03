@@ -78,7 +78,7 @@ def search(request,query_term=None,format=None):
             phenotypes = Phenotype.objects.published().filter(Q(name__icontains=query_term) |
                                                   Q(to_term__id__icontains=query_term) |
                                                   Q(to_term__name__icontains=query_term))
-            accessions = Accession.objects.filter(name__icontains=query_term)
+            accessions = Accession.objects.filter(Q(id__icontains=query_term) | Q(name__icontains=query_term))
             ontologies = OntologyTerm.objects.filter(name__icontains=query_term)
 
         study_serializer = StudyListSerializer(studies,many=True)
@@ -573,7 +573,7 @@ def study_isatab(request,q,format=None):
     return response
 
 '''
-List all studies
+List all accessions
 '''
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
@@ -600,7 +600,7 @@ def accession_list(request,format=None):
         return Response(serializer.data)
 
 '''
-Get detailed information about study
+Get detailed information about accession
 '''
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
