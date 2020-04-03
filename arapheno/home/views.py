@@ -58,31 +58,31 @@ def links(request):
     return render(request,'home/links.html',{})
 
 '''
-FAQ View of AraPhen
+FAQ View of ArachisPheno
 '''
 def faq(request):
     return render(request,'home/faq.html',{})
 
 '''
-FAQ Content View of AraPhen
+FAQ Content View of ArachisPheno
 '''
 def faqcontent(request):
     return render(request,'home/faqcontent.html',{})
 
 '''
-FAQ Tutorial Content View of AraPhen
+FAQ Tutorial Content View of ArachisPheno
 '''
 def faqtutorial(request):
     return render(request,'home/tutorials.html',{})
 
 '''
-FAQ REST Content View of AraPhen
+FAQ REST Content View of ArachisPheno
 '''
 def faqrest(request):
     return render(request,'home/faqrest.html',{})
 
 '''
-FAQ Cite Content View of AraPhen
+FAQ Cite Content View of ArachisPheno
 '''
 def faqcite(request):
     return render(request,'home/faqcite.html',{})

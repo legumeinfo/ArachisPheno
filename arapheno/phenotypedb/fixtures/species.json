@@ -3,9 +3,29 @@
     "model": "phenotypedb.Species",
     "pk": 1,
     "fields": {
-      "ncbi_id": 3702,
-      "genus": "Arabidopsis",
-      "species":"thaliana",
+      "ncbi_id": 3818,
+      "genus": "Arachis",
+      "species":"hypogaea",
+      "description": ""
+    }
+  },
+  {
+    "model": "phenotypedb.Species",
+    "pk": 2,
+    "fields": {
+      "ncbi_id": 130453,
+      "genus": "Arachis",
+      "species":"duranensis",
+      "description": ""
+    }
+  },
+  {
+    "model": "phenotypedb.Species",
+    "pk": 3,
+    "fields": {
+      "ncbi_id": 130454,
+      "genus": "Arachis",
+      "species":"ipaensis",
       "description": ""
     }
   }
