@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load maxmin_tags %}
 
 {% block title %}ArachisPheno - Phenotype {{object.name}} {% endblock title %}
 
@@ -348,7 +349,14 @@
         {% endautoescape %}
 
         var geoOptions = {};
-        var histogramOptions = {height:500,width:"100%",legend: { position: 'none' },hAxis:{title:'Phenotypic Value'},vAxis:{title:'Frequency'}};
+        // Compute histogram bin width like this:
+        // https://developers.google.com/chart/interactive/docs/gallery/histogram
+        var numValues = "{{ object.phenotypevalue_set.all|length }}";
+        var maxValue = "{{ object.phenotypevalue_set.all|pv_max }}";
+        var minValue = "{{ object.phenotypevalue_set.all|pv_min }}";
+        var numBins = Math.ceil(0.5*Math.sqrt(numValues));
+        var binWidth = (maxValue - minValue)/numBins;
+        var histogramOptions = {height:500,width:"100%",legend: { position: 'none' },hAxis:{title:'Phenotypic Value'},vAxis:{title:'Frequency'}, histogram: {bucketSize: binWidth}};
         var explorerOptions = {height:500};
         var tableOptions = {height:500, width:"100%",allowHtml:true};
 
