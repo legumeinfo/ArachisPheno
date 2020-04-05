@@ -82,6 +82,8 @@ urlpatterns = [
     url(r'^submission/(?P<pk>%s)/$' % UUID_REGEX, phenotypedb.views.SubmissionStudyResult.as_view(), name="submission_study_result"),
     url(r'^submission/(?P<pk>%s)/delete/$' % UUID_REGEX, phenotypedb.views.SubmissionStudyDeleteView.as_view(), name="submission_delete"),
     url(r'^submission/(?P<pk>%s)/(?P<phenotype_id>%s)/$' % (UUID_REGEX, ID_REGEX), phenotypedb.views.SubmissionPhenotypeResult.as_view(), name="submission_phenotype_result"),
+    url(r'^login/', home.views.login_request, name='login'),
+    url(r'^logout/', home.views.logout_request, name='logout'),
     url(r'^admin/', include(admin.site.urls))
 ]
 '''

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}ArachisPheno - Login{% endblock title %}
+
+{% block content %}
+
+<div id="index-banner" class="parallax-container" style="height:320px">
+    <div class="section no-pad-bot">
+        <div class="row center">
+            <h5 class="header col s12 m12 l12 light">Welcome to ArachisPheno! Please login.</h5>
+        </div>
+    </div>
+    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="container" style="height:100px">
+        {% if errmsg %}
+            <p style="color: yellow">{{ errmsg }}</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p style="color: yellow">Your account does not have access to this page.
+                   Please login with an account that has access.</p>
+            {% else %}
+                <p style="color: yellow">Please login to see this page.</p>
+            {% endif %}
+        {% endif %}
+
+        <form method="post" action="{% url 'login' %}" class="login">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login">
+            <!--input type="hidden" name="next" value="{{ next }}" /-->
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.parallax').parallax();
+    });
+</script>
+{% endblock content %}

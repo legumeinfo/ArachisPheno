@@ -18,6 +18,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__+ "/../")))
 # Load values hidden from GitHub
 from private_settings import *
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
+
 ADMINS = [('svengato', 'svengato@svengato.com')]
 EMAIL_HOST = 'hardy.lis.ncgr.org'
 EMAIL_PORT = 25

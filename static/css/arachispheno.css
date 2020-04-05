@@ -60,6 +60,16 @@ i.material-icons.error {
      color:#F44336;
 }
 
+.login input[type=text], input[type=password] {
+    background-color: white;
+    padding-left: 8px;
+    width: 200px;
+}
+
+.login label {
+    color: black;
+}
+
 .flash_warning {
     display: flex;
     justify-content: center;
