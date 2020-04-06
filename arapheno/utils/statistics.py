@@ -4,15 +4,15 @@ from scipy import stats
 
 logger = logging.getLogger(__name__)
 
-SUPPORTED_TRANSFORMATIONS = ("no","log", "sqrt", "sqr", "arcsin_sqrt", "box_cox","ascombe")
+SUPPORTED_TRANSFORMATIONS = ("no", "log", "sqrt", "sqr", "arcsin_sqrt", "box_cox", "anscombe")
 
 def transform(values, transformation, standard=True):
     if transformation == 'no':
         return sp.array(values)
     if transformation == 'sqrt':
         return _sqrt_transform(values, standard=standard)
-    elif transformation == 'ascombe':
-        return _ascombe_transform(values)
+    elif transformation == 'anscombe':
+        return _anscombe_transform(values)
     elif transformation == 'log':
         return _log_transform(values, standard=standard)
     elif transformation == 'sqr':
@@ -42,7 +42,7 @@ def _log_transform(values, standard=True):
         vals = sp.log(a)
     return vals
 
-def _ascombe_transform(values):
+def _anscombe_transform(values):
     a = sp.array(values)
     vals = 2.0 * sp.sqrt(a + 3.0 / 8.0)
     return vals
