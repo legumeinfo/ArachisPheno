@@ -338,9 +338,9 @@
           ],false);
 
         tableData = google.visualization.arrayToDataTable([
-          ['ID','Accession','Longitude','Latitude','Phenotype','Country'],
+          ['Accession','Accession ID','Replicate ID','Longitude','Latitude','Phenotype','Country'],
           {% for item in pheno_acc_infos %}
-             [ "<a href=\"{% url 'accession_detail' item.obs_unit.accession.id  %}\">{{ item.obs_unit.accession.id }}</a>", "{{ item.obs_unit.accession.name }}", {{ item.obs_unit.accession.longitude | default_if_none:"null" }}, {{ item.obs_unit.accession.latitude |default_if_none:"null" }},
+             [ "{{ item.obs_unit.accession.name }}", "<a href=\"{% url 'accession_detail' item.obs_unit.accession.id  %}\">{{ item.obs_unit.accession.id }}</a>", "{{ item.obs_unit.id }}", {{ item.obs_unit.accession.longitude | default_if_none:"null" }}, {{ item.obs_unit.accession.latitude |default_if_none:"null" }},
               {{ item.value }},"{{ item.obs_unit.accession.country }}"
             ],
           {% endfor %}

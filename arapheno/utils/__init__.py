@@ -107,8 +107,8 @@ def save_plink_or_csv(plink_data, name):
     """
     Saves the parsed plink data in a database
     """
-    # TODO don't harcode species
-    pmatrix, accession_ids, names = plink_data
+    # TODO: don't hard-code species
+    pmatrix, accession_ids, replicate_ids, names = plink_data
     study = Study(name=name, species=Species.objects.get(pk=1))
     study.save()
     phenotypes = []
@@ -117,9 +117,12 @@ def save_plink_or_csv(plink_data, name):
         phenotype.save()
         phenotypes.append(phenotype)
 
-    for acc_ix, accession_id in enumerate(accession_ids):
+    zz = zip(accession_ids, replicate_ids)
+    for acc_ix, z in enumerate(zz) :
+        accession_id = z[0]
+        replicate_id = z[1]
         try:
-            obs_unit = ObservationUnit(study=study, accession=Accession.objects.get(pk=accession_id))
+            obs_unit = ObservationUnit(id=replicate_id, study=study, accession=Accession.objects.get(pk=accession_id))
         except Accession.DoesNotExist as err:
             err.args += (accession_id,)
             raise err

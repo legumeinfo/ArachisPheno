@@ -117,6 +117,7 @@ def _parse_pheno_file(f, split_delimiter):
         f = codecs.open(f,'rU',encoding='utf-8')
     try:
         accession_ids = []
+        replicate_ids = []
         pmatrix = []
         names = None
         reader = csv.reader(f,delimiter=split_delimiter)
@@ -130,10 +131,12 @@ def _parse_pheno_file(f, split_delimiter):
                 names = map(lambda s: s.replace("_"," "),line[2:])
             else:
                 accession_ids.append(line[0].strip())
+                replicate_ids.append(line[1].strip())
                 pmatrix.append(map(lambda x: sp.nan if x == '' else float(x),line[2:]))
         accession_ids = sp.array(accession_ids)
+        replicate_ids = sp.array(replicate_ids)
         pmatrix = sp.array(pmatrix)
-        return [pmatrix,accession_ids,names]
+        return [ pmatrix, accession_ids, replicate_ids, names ]
     except Exception as error:
         raise error
     finally:

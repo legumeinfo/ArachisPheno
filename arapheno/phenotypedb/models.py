@@ -384,6 +384,7 @@ class ObservationUnit(models.Model):
     Observational unit model
     Physical plant. This is connected to both the Accession and the Study
     """
+    id = models.CharField(max_length=255, primary_key=True) # = replicate id
     accession = models.ForeignKey('Accession')
     study = models.ForeignKey('Study')
 
