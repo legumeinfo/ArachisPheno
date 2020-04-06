@@ -390,7 +390,7 @@ def upload_file(request):
                     submission.get_email_text(),
                     settings.EMAIL_ADDRESS,
                     [submission.email],
-                    [settings.ADMINS[0][1]],
+                    [settings.EMAIL_ADDRESS],
                     reply_to=[settings.EMAIL_ADDRESS]
                 )
                 email.send(True)
@@ -422,7 +422,7 @@ def submit_feedback(request):
                     from_email=from_email,
                     to=[settings.EMAIL_ADDRESS],
                     body=message,
-                    bcc=[settings.ADMINS[0][1]],
+                    bcc=[settings.EMAIL_ADDRESS],
                     reply_to=[settings.EMAIL_ADDRESS]
                 )
                 email.send(True)

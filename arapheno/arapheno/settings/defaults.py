@@ -21,10 +21,9 @@ from private_settings import *
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
 
-ADMINS = [('svengato', 'svengato@svengato.com')]
 EMAIL_HOST = 'hardy.lis.ncgr.org'
 EMAIL_PORT = 25
-EMAIL_ADDRESS = 'svengato@svengato.com' # for sending submission status, etc
+EMAIL_ADDRESS = 'peanutbase-contact@iastate.edu' # for sending submission status, etc
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/

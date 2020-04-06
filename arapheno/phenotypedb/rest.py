@@ -718,7 +718,7 @@ def submit_study(request,format=None):
                     submission.get_email_text(),
                     settings.EMAIL_ADDRESS,
                     [submission.email],
-                    [settings.ADMINS[0][1]],
+                    [settings.EMAIL_ADDRESS],
                     reply_to=[settings.EMAIL_ADDRESS]
                 )
                 email.send(True)
