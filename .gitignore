@@ -12,4 +12,5 @@ venv/
 *db.sqlite3
 data/
 db.sqlite3*
+database.zip
 private_settings.py
