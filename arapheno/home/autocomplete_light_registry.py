@@ -20,7 +20,7 @@ class GlobalSearchAutocomplete(autocomplete_light.AutocompleteGenericBase):
                      ('name',), #Ontology searhc field
                      ) 
 
-    attrs = {'placeholder':'Search a phenotype, study, trait ontology (e.g. type FRI for phenotype, Atwell for study, or concentration for ontology) or accession name',
+    attrs = {'placeholder':'Search a phenotype, study, trait ontology (e.g. type seed for phenotype, sd for study, or concentration for ontology) or accession name',
              'data-autocomplete-minimum-characters':1}
 
     widget_attrs = {'data-widget-maximum-values':1, 'class':'', 'style':'width:95%;height:50px'}
@@ -28,7 +28,7 @@ class GlobalSearchAutocomplete(autocomplete_light.AutocompleteGenericBase):
     #Individual Choice Render Format
     choice_html_format = u"<span class='block' data-value='%s'>%s</span>"
 
-    #Render Choide
+    #Render Choice
     def choice_html(self, choice):
         return self.choice_html_format % (self.choice_value(choice), self.choice_label(choice))
 
@@ -41,7 +41,7 @@ class GlobalSearchAutocomplete(autocomplete_light.AutocompleteGenericBase):
             elif isinstance(choice, Study):
                 html += ("<a href='study/%d'>%s</a>" % (choice.id, self.choice_html(choice)))
             elif isinstance(choice, Accession):
-                html += ("<a href='accession/%d'>%s</a>" % (choice.id, self.choice_html(choice)))
+                html += ("<a href='accession/%s'>%s</a>" % (choice.id, self.choice_html(choice)))
             elif isinstance(choice, OntologyTerm):
                 html += ("<a href='ontology/%s/%s'>%s</a>" % (choice.source.acronym,choice.id, self.choice_html(choice)))
         return html
@@ -71,7 +71,7 @@ class RNASeqGlobalSearchAutocomplete(autocomplete_light.AutocompleteGenericBase)
     #Individual Choice Render Format
     choice_html_format = u"<span class='block' data-value='%s'>%s</span>"
 
-    #Render Choide
+    #Render Choice
     def choice_html(self, choice):
         return self.choice_html_format % (self.choice_value(choice), self.choice_label(choice))
 
@@ -84,7 +84,7 @@ class RNASeqGlobalSearchAutocomplete(autocomplete_light.AutocompleteGenericBase)
             elif isinstance(choice, Study):
                 html += ("<a href='/study/%d'>%s</a>" % (choice.id, self.choice_html(choice)))
             elif isinstance(choice, Accession):
-                html += ("<a href='/accession/%d'>%s</a>" % (choice.id, self.choice_html(choice)))
+                html += ("<a href='/accession/%s'>%s</a>" % (choice.id, self.choice_html(choice)))
         return html
 
 autocomplete_light.register(RNASeqGlobalSearchAutocomplete)
