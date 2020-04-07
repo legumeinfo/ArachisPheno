@@ -128,7 +128,7 @@ def _parse_pheno_file(f, split_delimiter):
                     line = next(reader)
                     if len(line)==1:
                         raise Exception("Wrong file format")
-                names = map(lambda s: s.replace("_"," "),line[2:])
+                names = line[2:]
             else:
                 accession_ids.append(line[0].strip())
                 replicate_ids.append(line[1].strip())
