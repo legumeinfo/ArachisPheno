@@ -2,16 +2,16 @@
 
 {% block content %}
 
-<div id="index-banner" class="parallax-container" style="height:370px">
+<div id="index-banner" class="parallax-container" style="height:80px">
     <div class="section no-pad-bot">
         <div class="container">
-            <h1 class="header center white-text text-lighten-2">ArachisPheno</h1>
+            <!--h1 class="header center white-text text-lighten-2">ArachisPheno</h1>
             <div class="row center">
                 <h5 class="header col s12 m12 l12 light">ArachisPheno is a public database collection of <em><i>Arachis</i></em> (peanut) phenotypes.</h5>
                 <br>
                 <br>
                 <h5 class="header col s12 m12 l12 light">This Database allows to search and filter for public phenotypes and to obtain additional meta-information.</h5>
-            </div>
+            </div-->
             <form method="post" action="." name="_search_form">
                 {% csrf_token %}
                     <div class="valign-wrapper white" id="search_box">
@@ -66,12 +66,12 @@
                  <a class="waves-effect waves-light btn-large brown"  href="/submission/"><i class="material-icons left">backup</i>Submit Phenotypes</a>
              </div>
             <div class="col s12 m6 l4">
-                 <div class="icon-block">
+                 <!--div class="icon-block">
                      <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">cloud_download</i></h3>
                      <h5 class="center">Download Database</h5>
                      <p class="light">Download the full ArachisPheno database, including all phenotypes and meta-information.</p>
                  </div>
-                 <a class="waves-effect waves-light btn-large brown"  href="/static/database.zip" ><i class="material-icons left">cloud_download</i>Download Database</a>
+                 <a class="waves-effect waves-light btn-large brown"  href="/static/database.zip" ><i class="material-icons left">cloud_download</i>Download Database</a-->
              </div>
             <div class="col s12 m6 l4 offset-m3">
                 <div class="icon-block">
@@ -84,7 +84,7 @@
 	    </div>
 
         <div class="row center">
-            <div class="col s12 m6 l4">
+            <!--div class="col s12 m6 l4">
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">rowing</i></h3>
                     <h5 class="center">Take a Tour</h5>
@@ -92,7 +92,7 @@
                     Take a guided tour through ArachisPheno and familiarize yourself with all available public functions. </p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown" id="start_tour" ><i class="material-icons left">rowing</i>Take a Tour</a>
-            </div>
+            </div-->
 
             <div class="col s12 m6 l4">
                 <div class="icon-block">
@@ -102,6 +102,8 @@
                 </div>
                 <a class="waves-effect waves-light btn-large brown modal-trigger" href="#faqmodal" id="faq_button"><i class="material-icons left">help_outline</i>FAQ</a>
             </div>
+
+<div class="col s12 m6 l4"></div> <!-- Remove when you replace Take a Tour -->
 
             <div class="col s12 m6 l4 offset-m3">
                     <div class="icon-block">
