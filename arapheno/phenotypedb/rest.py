@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.db.models import Count
 from django.http import FileResponse
 from django.core.mail import EmailMessage
+from django.contrib.auth.decorators import login_required
 
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes, renderer_classes, parser_classes
@@ -49,6 +50,7 @@ Search Endpoint
 '''
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
+@login_required
 def search(request,query_term=None,format=None):
     """
     Search for a phenotype or study
@@ -96,6 +98,7 @@ List all phenotypes
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((PhenotypeListRenderer,JSONRenderer))
+@login_required
 def phenotype_list(request,format=None):
     """
     List all available phenotypes
@@ -119,6 +122,7 @@ List all similar phenotypes
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((PhenotypeListRenderer,JSONRenderer))
+@login_required
 def phenotype_similar_list(request,q,format=None):
     """
     List all available phenotypes matching phenotype q's trait ontology
@@ -150,6 +154,7 @@ Detail information about phenotype
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((PhenotypeListRenderer,JSONRenderer))
+@login_required
 def phenotype_detail(request,q,format=None):
     """
     Detailed information about the phenotype
@@ -188,6 +193,7 @@ Get all phenotype values
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((PhenotypeValueRenderer,JSONRenderer,PLINKRenderer,))
+@login_required
 def phenotype_value(request,q,format=None):
     """
     List of the phenotype values
@@ -224,6 +230,7 @@ Get all rnaseq values
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((PhenotypeValueRenderer,JSONRenderer,PLINKRenderer,))
+@login_required
 def rnaseq_value_by_gene_id(request,study_id,gene_id,format=None):
     """
     List of the rnaseq values
@@ -265,6 +272,7 @@ Get all rnaseq values
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((PhenotypeValueRenderer,JSONRenderer,PLINKRenderer,))
+@login_required
 def rnaseq_value(request,q,format=None):
     """
     List of the rnaseq values
@@ -301,6 +309,7 @@ List all studies
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((StudyListRenderer,JSONRenderer))
+@login_required
 def study_list(request,format=None):
     """
     List all available studies
@@ -325,6 +334,7 @@ Get detailed information about study
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((StudyListRenderer,JSONRenderer))
+@login_required
 def study_detail(request,q,format=None):
     """
     Retrieve detailed information about the study
@@ -356,6 +366,7 @@ List all phenotypes for study id/doi
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((PhenotypeListRenderer,JSONRenderer,))
+@login_required
 def study_all_pheno(request,q=None,format=None):
     """
     List all phenotypes for a study
@@ -385,6 +396,7 @@ List phenotype value matrix for entire study
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((PhenotypeMatrixRenderer,PLINKMatrixRenderer,JSONRenderer))
+@login_required
 def study_phenotype_value_matrix(request,q,format=None):
     """
     Phenotype value matrix for entire study
@@ -416,6 +428,7 @@ def study_phenotype_value_matrix(request,q,format=None):
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((TransformationRenderer,JSONRenderer))
+@login_required
 def transformations(request,q,transformation=None, format=None):
     """
     Transformation of phenotypes
@@ -449,11 +462,12 @@ def transformations(request,q,transformation=None, format=None):
 
 
 '''
-Corrleation Matrix for selected phenotypes
+Correlation Matrix for selected phenotypes
 '''
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((JSONRenderer,))
+@login_required
 def phenotype_correlations(request,q=None):
     """
     Return data for phenotype-phenotype correlations and between phenotype accession overlap
@@ -542,6 +556,7 @@ Returns ISA-TAB archive
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((IsaTabFileRenderer,JSONRenderer))
+@login_required
 def study_isatab(request,q,format=None):
     """
     Generate ISA-TAB archive for a study
@@ -578,6 +593,7 @@ List all accessions
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((AccessionListRenderer,JSONRenderer))
+@login_required
 def accession_list(request,format=None):
     """
     List all accessions
@@ -605,6 +621,7 @@ Get detailed information about accession
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((AccessionListRenderer,JSONRenderer))
+@login_required
 def accession_detail(request,pk,format=None):
     """
     Retrieve detailed information about the accession
@@ -628,6 +645,7 @@ def accession_detail(request,pk,format=None):
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((PhenotypeListRenderer,JSONRenderer,))
+@login_required
 def accession_phenotypes(request,pk,format=None):
     """
     List all phenotypes for an accession
@@ -650,6 +668,7 @@ def accession_phenotypes(request,pk,format=None):
 @permission_classes((AllowAny,))
 @renderer_classes((JSONRenderer,))
 @parser_classes((JSONParser, AccessionTextParser))
+@login_required
 def accessions_phenotypes(request,format=None):
     """
     Retrieve all phenotypes for a list of accessions
@@ -675,6 +694,7 @@ def accessions_phenotypes(request,format=None):
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 @renderer_classes((JSONRenderer,))
+@login_required
 def ontology_tree_data(request,acronym=None,term_id=None,format=None):
     """
     Retrieve ontology tree structure
@@ -697,6 +717,7 @@ def ontology_tree_data(request,acronym=None,term_id=None,format=None):
 @permission_classes((AllowAny,))
 @renderer_classes((JSONRenderer,))
 @parser_classes((FormParser, MultiPartParser))
+@login_required
 def submit_study(request,format=None):
     """
     Submit a study
@@ -736,6 +757,7 @@ def submit_study(request,format=None):
 @api_view(['GET'])
 @permission_classes((AllowAny,))
 @renderer_classes((JSONRenderer,))
+@login_required
 def submission_infos(request,pk,format=None):
     """
     Retrieve detailed information about the submission
@@ -759,6 +781,7 @@ def submission_infos(request,pk,format=None):
 @api_view(['DELETE'])
 @permission_classes((AllowAny,))
 @renderer_classes((JSONRenderer,))
+@login_required
 def delete_submission(request,pk,format=None):
     """
     Deletes a submission
