@@ -839,14 +839,17 @@ def _is_geneid(term):
 def generate_database_dump():
     """
     Generate an archive of the full database
+    (python manage.py generate_database_dump)
     """
-    # create temorary folder
+    # destination for archive
+    dest_dir = settings.STATICFILES_DIRS[0]
     arachispheno_filename = "database"
-    output_filename = os.path.join(settings.STATIC_ROOT, '%s.zip' % arachispheno_filename)
+    output_filename = os.path.join(dest_dir, '%s.zip' % arachispheno_filename)
 
+    # create temporary folder
     folder = tempfile.mkdtemp()
 
-    # Get list of studies ids
+    # Get list of study ids
     studies = Study.objects.published().filter(rnaseq__isnull=True).all()
     # Create subfolders
     for study in studies:
@@ -860,7 +863,7 @@ def generate_database_dump():
 
     # zip it
     output_filename = shutil.make_archive(arachispheno_filename,"zip",folder)
-    shutil.move(output_filename, os.path.join(settings.STATIC_ROOT, os.path.basename(output_filename)))
+    shutil.move(output_filename, os.path.join(dest_dir, os.path.basename(output_filename)))
 
     # remove temporary folder
     shutil.rmtree(folder)
