@@ -71,7 +71,27 @@ class PhenotypeDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(PhenotypeDetail, self).get_context_data(**kwargs)
         context['pheno_acc_infos'] = self.object.phenotypevalue_set.select_related('obs_unit__accession')
-        context['geo_chart_data'] = Accession.objects.filter(observationunit__phenotypevalue__phenotype_id=self.object.pk).values('country').annotate(count=Count('country'))
+
+        # Determine unique Accessions, total and by country
+        # The following *should* work, but SQLite does not implement the DISTINCT ON tag.
+        # context['geo_chart_data'] = Accession.objects.filter(observationunit__phenotypevalue__phenotype_id=self.object.pk).distinct('id').values('country').annotate(count=Count('country'))
+        # Instead, do it like this
+        accs = Accession.objects.filter(observationunit__phenotypevalue__phenotype_id=self.object.pk)
+        acc_dict = {}
+        count_by_country = {}
+        for acc in accs :
+            if acc.id not in acc_dict :
+                acc_dict[acc.id] = acc
+                if len(acc.country) > 0 :
+                    # since unknown countries do not appear on the map, and may have a higher count,
+                    # do not include them in count_by_country
+                    try :
+                        count_by_country[acc.country] = count_by_country[acc.country] + 1
+                    except :
+                        count_by_country[acc.country] = 1
+        context['num_unique_accessions'] = len(acc_dict)
+        context['geo_chart_data'] = count_by_country
+
         context['values'] = self.object.phenotypevalue_set.all().values_list("value", flat=True)
         context['shapiro'] = "%.2e"%shapiro(context['values'])[1]
         return context

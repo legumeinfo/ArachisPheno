@@ -178,7 +178,7 @@
             </div>
         </div>
         <div class="col s12 m7" style="text-align:center" id="geo_chart_container">
-            <span >Geographic distribution of {{ object.phenotypevalue_set.count }} accessions</span>
+            <span >Geographic distribution of {{ num_unique_accessions }} accessions</span>
             <div id="geo_chart" style="width:100%;height:100%"></div>
         </div>
             <div class="row">
@@ -317,8 +317,8 @@
         {% autoescape off %}
         geoChartData = google.visualization.arrayToDataTable([
           ['Country', 'Frequency'],
-          {% for geo in geo_chart_data %}
-             [ "{{ geo.country }}", {{ geo.count }} ],
+          {% for country, count in geo_chart_data.items %}
+             [ "{{ country }}", {{ count }} ],
           {% endfor %}
         ],false);
 
