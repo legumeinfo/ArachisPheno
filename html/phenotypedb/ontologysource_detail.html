@@ -31,7 +31,7 @@
     var treeData =  {{ tree|safe }}
     function showDetailPage(id) {
         var frame = $('#term_detail')[0];  
-        var newUrl = "//{{ request.get_host }}/term/" + (id ? id : '');
+        var newUrl = '{{ base_url }}/term/' + (id ? id : '');
         frame.contentWindow.location.replace(newUrl);
     }
     window.onpopstate = function(event) {

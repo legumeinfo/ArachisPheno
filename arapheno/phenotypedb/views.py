@@ -28,6 +28,7 @@ from scipy.stats import shapiro
 import json, itertools
 from utils import calculate_phenotype_transformations, add_publication_to_study
 
+from arapheno.settings.private_settings import BASE_URL
 
 # Create your views here.
 
@@ -304,6 +305,7 @@ def detail_ontology_source(request,acronym,term_id=None):
     else:
         tree = [{'id':term.pk,'text':term.name,'children':True if term.children.count() > 0 else False} for term in root_nodes]
     variable_dict['tree'] = json.dumps(tree)
+    variable_dict['base_url'] = BASE_URL
     return render(request, 'phenotypedb/ontologysource_detail.html', variable_dict)
 
 
