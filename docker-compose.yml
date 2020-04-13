@@ -1,4 +1,4 @@
-version: '2'
+version: "3.7"
 services:
   db:
     restart: unless-stopped
@@ -7,19 +7,42 @@ services:
       - postgres_data:/var/lib/postgresql/data/
   web:
     restart: unless-stopped
-    image: "docker.artifactory.imp.ac.at/the1001genomes/arapheno:latest"
+    build: .
     volumes:
-      - /usr/share/nginx/html/static:/usr/share/nginx/html/static
-    ports:
-      - "8000:8000"
+      - type: volume
+        source: static_files
+        target: /srv/static
+      - type: bind
+        source: ./arapheno/db.sqlite3
+        target: /srv/web/arapheno/db.sqlite3
     environment:
       - DATACITE_USERNAME=${DATACITE_USERNAME}
       - DATACITE_PASSWORD=${DATACITE_PASSWORD}
       - EMAIL_HOST=${EMAIL_HOST}
       - EMAIL_USER=${EMAIL_USER}
-      - DJANGO_SETTINGS_MODULE=arapheno.settings.prod
-      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - DJANGO_SETTINGS_MODULE=arapheno.settings.dev
+      # - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - ALLOWED_HOSTS=dev-arachispheno
     depends_on:
       - db
+  nginx:
+    image: nginx:stable-alpine
+    restart: always
+    depends_on:
+      - web
+    ports:
+      - "8000:80"
+    volumes:
+      - type: volume
+        source: static_files
+        target: /usr/share/nginx/html/static
+        read_only: true
+        volume:
+          nocopy: true
+      - type: bind
+        source: ./arachispheno.conf
+        target: /etc/nginx/conf.d/default.conf
+        read_only: true
 volumes:
   postgres_data:
+  static_files:

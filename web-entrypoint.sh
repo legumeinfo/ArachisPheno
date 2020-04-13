@@ -7,5 +7,5 @@ if [ "$1" = 'manage.py' ]; then
   ./manage.py collectstatic --noinput
   exec /usr/local/bin/gunicorn arapheno.wsgi:application -w 2 -b :8000
 fi
-echo "Runing command..."
+echo "Running command..."
 exec "$@"
