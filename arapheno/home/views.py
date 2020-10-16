@@ -3,9 +3,9 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 
+from decorators import login_if_required
 from forms import GlobalSearchForm, RNASeqGlobalSearchForm
 
 from phenotypedb.models import Study, Phenotype, Accession, OntologyTerm, RNASeq
@@ -45,7 +45,7 @@ def login_request(request) :
 '''
 Home View of ArachisPheno
 '''
-@login_required
+@login_if_required
 def home(request):
     search_form = GlobalSearchForm()
     if "global_search-autocomplete" in request.POST:
@@ -62,7 +62,7 @@ def home(request):
         stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b/%d/%Y')
     return render(request,'home/home.html',{"search_form":search_form,"stats":stats, 'is_rnaseq': False})
 
-@login_required
+@login_if_required
 def home_rnaseq(request):
     search_form = RNASeqGlobalSearchForm()
     if "rnaseq_global_search-autocomplete" in request.POST:
@@ -82,63 +82,63 @@ def home_rnaseq(request):
 '''
 About View of ArachisPheno
 '''
-@login_required
+@login_if_required
 def about(request):
     return render(request,'home/about.html',{})
 
 '''
 Links View of ArachisPheno
 '''
-@login_required
+@login_if_required
 def links(request):
     return render(request,'home/links.html',{})
 
 '''
 FAQ View of ArachisPheno
 '''
-@login_required
+@login_if_required
 def faq(request):
     return render(request,'home/faq.html',{})
 
 '''
 FAQ Content View of ArachisPheno
 '''
-@login_required
+@login_if_required
 def faqcontent(request):
     return render(request,'home/faqcontent.html',{})
 
 '''
 FAQ Tutorial Content View of ArachisPheno
 '''
-@login_required
+@login_if_required
 def faqtutorial(request):
     return render(request,'home/tutorials.html',{})
 
 '''
 FAQ REST Content View of ArachisPheno
 '''
-@login_required
+@login_if_required
 def faqrest(request):
     return render(request,'home/faqrest.html',{})
 
 '''
 FAQ Cite Content View of ArachisPheno
 '''
-@login_required
+@login_if_required
 def faqcite(request):
     return render(request,'home/faqcite.html',{})
 
 '''
 FAQ IssUE Content View of ArachisPheno
 '''
-@login_required
+@login_if_required
 def faqissue(request):
     return render(request,'home/faqissue.html',{})
 
 '''
 Search Result View for Global Search in ArachisPheno
 '''
-@login_required
+@login_if_required
 def SearchResults(request,query=None):
     if query==None:
         phenotypes = Phenotype.objects.published().all()
@@ -183,7 +183,7 @@ def SearchResults(request,query=None):
     return render(request,'home/search_results.html',variable_dict)
 
 # RNASeq search
-@login_required
+@login_if_required
 def SearchResultsRNASeq(request,query=None):
     studies = Study.objects.published().annotate(pheno_count=Count('phenotype')).annotate(rna_count=Count('rnaseq'))
     studies = studies.filter(pheno_count=0).filter(rna_count__gt=0)

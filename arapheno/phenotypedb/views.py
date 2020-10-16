@@ -2,7 +2,6 @@
 View definitions for ArachisPheno
 """
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMessage
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.db.models import Count
@@ -28,11 +27,12 @@ from scipy.stats import shapiro
 import json, itertools
 from utils import calculate_phenotype_transformations, add_publication_to_study
 
-from arapheno.settings.private_settings import BASE_URL
+from home.decorators import login_if_required
+from arapheno.settings.private_settings import BASE_URL, REQUIRE_USER_AUTHENTICATION
 
 # Create your views here.
 
-@login_required
+@login_if_required
 def list_phenotypes(request):
     """
     Displays table of all published phenotypes
@@ -41,7 +41,7 @@ def list_phenotypes(request):
     RequestConfig(request, paginate={"per_page":20}).configure(table)
     return render(request, 'phenotypedb/phenotype_list.html', {"phenotype_table":table})
 
-@login_required
+@login_if_required
 def list_rnaseqs(request):
     """
     Displays table of all published RNASeq
@@ -50,7 +50,7 @@ def list_rnaseqs(request):
     RequestConfig(request, paginate={"per_page":50}).configure(table)
     return render(request, 'phenotypedb/rnaseq_data_list.html', {"rnaseq_table":table, 'is_rnaseq': True})
 
-@login_required
+@login_if_required
 def list_rnaseq_studies(request):
     """
     Displays table of all published RNASeq
@@ -112,7 +112,7 @@ class RNASeqDetail(DetailView):
         context['is_rnaseq'] = True
         return context
 
-@login_required
+@login_if_required
 def list_studies(request):
     """
     Displays table of all published studies
@@ -124,7 +124,7 @@ def list_studies(request):
     return render(request, 'phenotypedb/study_list.html', {"study_table":table})
 
 
-@login_required
+@login_if_required
 def detail_study(request, pk=None):
     """
     Detailed view of a single study
@@ -147,7 +147,7 @@ def detail_study(request, pk=None):
     variable_dict['is_rnaseq'] = is_rnaseq
     return render(request, 'phenotypedb/study_detail.html', variable_dict)
 
-@login_required
+@login_if_required
 def correlation_wizard(request):
     """
     Shows the correlation wizard form
@@ -159,14 +159,14 @@ def correlation_wizard(request):
         return HttpResponseRedirect("/correlation/" + query + "/")
     return render(request, 'phenotypedb/correlation_wizard.html', {"phenotype_wizard":wizard_form})
 
-@login_required
+@login_if_required
 def correlation_results(request, ids=None):
     """
     Shows the correlation result
     """
     return render(request, 'phenotypedb/correlation_results.html', {"phenotype_ids":ids})
 
-@login_required
+@login_if_required
 def transformation_wizard(request):
     """
     Shows the transformation wizard form
@@ -178,7 +178,7 @@ def transformation_wizard(request):
         return HttpResponseRedirect("/phenotype/" + str(query[0]) + "/transformation/")
     return render(request, 'phenotypedb/transformation_wizard.html', {"transformation_wizard":wizard_form})
 
-@login_required
+@login_if_required
 def transformation_results(request, pk):
     """
     SHow transformation result
@@ -188,7 +188,7 @@ def transformation_results(request, pk):
     data['object'] = phenotype
     return render(request, 'phenotypedb/transformation_results.html', data)
 
-@login_required
+@login_if_required
 def rnaseq_transformation_results(request, pk):
     """
     SHow transformation result
@@ -199,7 +199,7 @@ def rnaseq_transformation_results(request, pk):
     data['is_rnaseq'] = True
     return render(request, 'phenotypedb/rnaseq_transformation_results.html', data)
 
-@login_required
+@login_if_required
 def list_accessions(request):
     """
     Displays table with all accessions
@@ -218,7 +218,7 @@ def list_accessions(request):
     return render(request, 'phenotypedb/accession_list.html', {"accession_table":table, "genotypes": genotypes, "filtered_genotypes": list(filtered_genotypes)})
 
 
-@login_required
+@login_if_required
 def detail_accession(request, pk=None):
     """
     Detailed view of a single accession
@@ -256,7 +256,7 @@ def _get_db_field_from_source(source):
         raise Exception('term %s unknown' % source.acronym)
 
 
-@login_required
+@login_if_required
 def detail_ontology_term(request,pk=None):
     """
     Detailed view of Ontology
@@ -280,7 +280,7 @@ def detail_ontology_term(request,pk=None):
     return render(request, 'phenotypedb/ontologyterm_detail.html', variable_dict)
 
 
-@login_required
+@login_if_required
 def list_ontology_sources(request):
     """
     Displays list of ontologies
@@ -288,7 +288,7 @@ def list_ontology_sources(request):
     return render(request, 'phenotypedb/ontologysource_list.html', {"objects":OntologySource.objects.all()})
 
 
-@login_required
+@login_if_required
 def detail_ontology_source(request,acronym,term_id=None):
     """
     Detailed view of OntologySource
@@ -397,7 +397,7 @@ class SubmissionPhenotypeResult(UpdateView):
 
 
 
-@login_required
+@login_if_required
 def upload_file(request):
     """
     View that is displayed for uploading a study/submission
@@ -426,7 +426,7 @@ def upload_file(request):
     return render(request, 'home/upload.html', {'form': form})
 
 
-@login_required
+@login_if_required
 def submit_feedback(request):
     """
     View to submit issues and feedback
@@ -456,18 +456,18 @@ def submit_feedback(request):
     return render(request, 'home/feedback.html', {'form': form})
 
 
-@login_required
+@login_if_required
 def submit_feedback_success(request):
     return render(request, 'home/feedback_success.html')
 
-@login_required
+@login_if_required
 def download(request):
     """
     Download data
     """
     return render(request, 'phenotypedb/download.html')
 
-@login_required
+@login_if_required
 @require_http_methods(["POST"])
 def add_doi(request, pk):
     """
