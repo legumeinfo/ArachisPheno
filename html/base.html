@@ -69,7 +69,7 @@
                 </div>
 
                 <!-- </div> -->
-                {% if request.user.is_authenticated %}
+                {% if show_menu_bar %}
                 <ul class="right hide-on-med-and-down black-text">
                     <li>
                         <a class="dropdown-button black-text" href="#!" data-activates="datadropdown">Data<i class="material-icons right black-text">arrow_drop_down</i></a>
@@ -100,7 +100,9 @@
                     <li><a class="black-text" href="/about">About</a></li>
                     <li><a class="black-text" href="/links">Links</a></li>
                     <li><a class="black-text modal-trigger" href="#faqmodal">FAQ</a></li>
-                    <li><a class="black-text" href="/logout">Logout</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li><a class="black-text" href="/logout">Logout</a></li>
+                    {% endif %}
                 </ul>
 
                 <ul id="nav-mobile" class="side-nav">
@@ -149,7 +151,9 @@
                     <li><a class="black-text" href="/about">About</a></li>
                     <li><a class="black-text" href="/links">Links</a></li>
                     <li><a class="black-text" href="/faq">FAQ</a></li>
-                    <li><a class="black-text" href="/logout">Logout</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li><a class="black-text" href="/logout">Logout</a></li>
+                    {% endif %}
 
                     </li>
 

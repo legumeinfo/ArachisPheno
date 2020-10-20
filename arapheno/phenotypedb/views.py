@@ -28,6 +28,7 @@ import json, itertools
 from utils import calculate_phenotype_transformations, add_publication_to_study
 
 from home.decorators import login_if_required
+from home.views import authentication_context
 from arapheno.settings.private_settings import BASE_URL, REQUIRE_USER_AUTHENTICATION
 
 # Create your views here.
@@ -39,7 +40,9 @@ def list_phenotypes(request):
     """
     table = PhenotypeTable(Phenotype.objects.annotate(num_values=Count('phenotypevalue')).published(), order_by="name")
     RequestConfig(request, paginate={"per_page":20}).configure(table)
-    return render(request, 'phenotypedb/phenotype_list.html', {"phenotype_table":table})
+    context = { 'phenotype_table': table }
+    context.update(authentication_context(request))
+    return render(request, 'phenotypedb/phenotype_list.html', context)
 
 @login_if_required
 def list_rnaseqs(request):
@@ -48,7 +51,9 @@ def list_rnaseqs(request):
     """
     table = RNASeqTable(RNASeq.objects.all(), order_by="name")
     RequestConfig(request, paginate={"per_page":50}).configure(table)
-    return render(request, 'phenotypedb/rnaseq_data_list.html', {"rnaseq_table":table, 'is_rnaseq': True})
+    context = { 'rnaseq_table': table, 'is_rnaseq': True }
+    context.update(authentication_context(request))
+    return render(request, 'phenotypedb/rnaseq_data_list.html', context)
 
 @login_if_required
 def list_rnaseq_studies(request):
@@ -61,7 +66,9 @@ def list_rnaseq_studies(request):
     studies = studies.filter(pheno_count=0).filter(rna_count__gt=0)
     table = RNASeqStudyTable(studies, order_by="name")
     RequestConfig(request, paginate={"per_page":50}).configure(table)
-    return render(request, 'phenotypedb/rnaseq_study_list.html', {"study_table":table, 'is_rnaseq': True})
+    context = { 'study_table': table, 'is_rnaseq': True }
+    context.update(authentication_context(request))
+    return render(request, 'phenotypedb/rnaseq_study_list.html', context)
 
 class PhenotypeDetail(DetailView):
     """
@@ -95,6 +102,7 @@ class PhenotypeDetail(DetailView):
 
         context['values'] = self.object.phenotypevalue_set.all().values_list("value", flat=True)
         context['shapiro'] = "%.2e"%shapiro(context['values'])[1]
+        context.update(authentication_context(self.request))
         return context
 
 class RNASeqDetail(DetailView):
@@ -110,6 +118,7 @@ class RNASeqDetail(DetailView):
         context['values'] = self.object.rnaseqvalue_set.all().values_list("value", flat=True)
         context['shapiro'] = "%.2e"%shapiro(context['values'])[1]
         context['is_rnaseq'] = True
+        context.update(authentication_context(self.request))
         return context
 
 @login_if_required
@@ -121,7 +130,9 @@ def list_studies(request):
     studies = studies.filter(pheno_count__gt=0).filter(rna_count=0)
     table = StudyTable(studies, order_by="-update_date")
     RequestConfig(request, paginate={"per_page":20}).configure(table)
-    return render(request, 'phenotypedb/study_list.html', {"study_table":table})
+    context = { 'study_table': table }
+    context.update(authentication_context(request))
+    return render(request, 'phenotypedb/study_list.html', context)
 
 
 @login_if_required
@@ -145,6 +156,7 @@ def detail_study(request, pk=None):
     variable_dict['eo_data'] = study.phenotype_set.values('eo_term__name').annotate(count=Count('eo_term__name'))
     variable_dict['uo_data'] = study.phenotype_set.values('uo_term__name').annotate(count=Count('uo_term__name'))
     variable_dict['is_rnaseq'] = is_rnaseq
+    variable_dict.update(authentication_context(request))
     return render(request, 'phenotypedb/study_detail.html', variable_dict)
 
 @login_if_required
@@ -157,14 +169,18 @@ def correlation_wizard(request):
         query = request.POST.getlist("phenotype_search")
         query = ",".join(map(str,query))
         return HttpResponseRedirect("/correlation/" + query + "/")
-    return render(request, 'phenotypedb/correlation_wizard.html', {"phenotype_wizard":wizard_form})
+    context = { 'phenotype_wizard': wizard_form }
+    context.update(authentication_context(request))
+    return render(request, 'phenotypedb/correlation_wizard.html', context)
 
 @login_if_required
 def correlation_results(request, ids=None):
     """
     Shows the correlation result
     """
-    return render(request, 'phenotypedb/correlation_results.html', {"phenotype_ids":ids})
+    context = { 'phenotype_ids': ids }
+    context.update(authentication_context(request))
+    return render(request, 'phenotypedb/correlation_results.html', context)
 
 @login_if_required
 def transformation_wizard(request):
@@ -176,7 +192,9 @@ def transformation_wizard(request):
         query = request.POST.getlist("phenotype_search")
         #query = ",".join(map(str,query))
         return HttpResponseRedirect("/phenotype/" + str(query[0]) + "/transformation/")
-    return render(request, 'phenotypedb/transformation_wizard.html', {"transformation_wizard":wizard_form})
+    context = { 'transformation_wizard': wizard_form }
+    context.update(authentication_context(request))
+    return render(request, 'phenotypedb/transformation_wizard.html', context)
 
 @login_if_required
 def transformation_results(request, pk):
@@ -186,6 +204,7 @@ def transformation_results(request, pk):
     phenotype = Phenotype.objects.get(id=pk)
     data = calculate_phenotype_transformations(phenotype)
     data['object'] = phenotype
+    data.update(authentication_context(request))
     return render(request, 'phenotypedb/transformation_results.html', data)
 
 @login_if_required
@@ -197,6 +216,7 @@ def rnaseq_transformation_results(request, pk):
     data = calculate_phenotype_transformations(rnaseq, rnaseq=True)
     data['object'] = rnaseq
     data['is_rnaseq'] = True
+    data.update(authentication_context(request))
     return render(request, 'phenotypedb/rnaseq_transformation_results.html', data)
 
 @login_if_required
@@ -215,7 +235,9 @@ def list_accessions(request):
     for genotype in genotypes:
         genotype.selected = genotype.pk in filtered_genotypes
     RequestConfig(request, paginate={"per_page":20}).configure(table)
-    return render(request, 'phenotypedb/accession_list.html', {"accession_table":table, "genotypes": genotypes, "filtered_genotypes": list(filtered_genotypes)})
+    context = { 'accession_table': table, 'genotypes': genotypes, 'filtered_genotypes': list(filtered_genotypes) }
+    context.update(authentication_context(request))
+    return render(request, 'phenotypedb/accession_list.html', context)
 
 
 @login_if_required
@@ -234,6 +256,7 @@ def detail_accession(request, pk=None):
     variable_dict['to_data'] = phenotypes.values('to_term__name').annotate(count=Count('to_term__name'))
     variable_dict['eo_data'] = phenotypes.values('eo_term__name').annotate(count=Count('eo_term__name'))
     variable_dict['uo_data'] = phenotypes.values('uo_term__name').annotate(count=Count('uo_term__name'))
+    variable_dict.update(authentication_context(request))
     return render(request, 'phenotypedb/accession_detail.html', variable_dict)
 
 
@@ -277,6 +300,7 @@ def detail_ontology_term(request,pk=None):
     phenotype_table = PhenotypeTable(phenotypes, order_by="name")
     RequestConfig(request, paginate={"per_page":20}).configure(phenotype_table)
     variable_dict["phenotype_table"] = phenotype_table
+    variable_dict.update(authentication_context(request))
     return render(request, 'phenotypedb/ontologyterm_detail.html', variable_dict)
 
 
@@ -285,7 +309,9 @@ def list_ontology_sources(request):
     """
     Displays list of ontologies
     """
-    return render(request, 'phenotypedb/ontologysource_list.html', {"objects":OntologySource.objects.all()})
+    context = { 'objects': OntologySource.objects.all() }
+    context.update(authentication_context(request))
+    return render(request, 'phenotypedb/ontologysource_list.html', context)
 
 
 @login_if_required
@@ -306,6 +332,7 @@ def detail_ontology_source(request,acronym,term_id=None):
         tree = [{'id':term.pk,'text':term.name,'children':True if term.children.count() > 0 else False} for term in root_nodes]
     variable_dict['tree'] = json.dumps(tree)
     variable_dict['base_url'] = BASE_URL
+    variable_dict.update(authentication_context(request))
     return render(request, 'phenotypedb/ontologysource_detail.html', variable_dict)
 
 
@@ -345,6 +372,7 @@ class SubmissionStudyDeleteView(DeleteView):
     def get_context_data(self, **kwargs):
         context = super(SubmissionStudyDeleteView, self).get_context_data(**kwargs)
         context['submission'] = self.object.submission
+        context.update(authentication_context(self.request))
         return context
 
     def get_object(self, queryset=None):
@@ -366,6 +394,7 @@ class SubmissionStudyResult(UpdateView):
         RequestConfig(self.request, paginate={"per_page":20}).configure(phenotype_table)
         context['curation_phenotype_table'] = phenotype_table
         context['submission'] = self.object.submission
+        context.update(authentication_context(self.request))
         return context
 
 
@@ -389,6 +418,7 @@ class SubmissionPhenotypeResult(UpdateView):
         context['uo_terms'] = OntologyTerm.objects.uo_terms()
         context['to_terms'] = OntologyTerm.objects.to_terms()
         context['eo_terms'] = OntologyTerm.objects.eo_terms()
+        context.update(authentication_context(self.request))
         return context
 
 
@@ -423,7 +453,9 @@ def upload_file(request):
                 form.add_error(None, str(err))
     else:
         form = UploadFileForm()
-    return render(request, 'home/upload.html', {'form': form})
+    context = { 'form': form }
+    context.update(authentication_context(request))
+    return render(request, 'home/upload.html', context)
 
 
 @login_if_required
@@ -453,19 +485,21 @@ def submit_feedback(request):
                 form.add_error(None, str(err))
     else:
         form = SubmitFeedbackForm()
-    return render(request, 'home/feedback.html', {'form': form})
+    context = { 'form': form }
+    context.update(authentication_context(request))
+    return render(request, 'home/feedback.html', context)
 
 
 @login_if_required
 def submit_feedback_success(request):
-    return render(request, 'home/feedback_success.html')
+    return render(request, 'home/feedback_success.html', authentication_context(request))
 
 @login_if_required
 def download(request):
     """
     Download data
     """
-    return render(request, 'phenotypedb/download.html')
+    return render(request, 'phenotypedb/download.html', authentication_context(request))
 
 @login_if_required
 @require_http_methods(["POST"])
