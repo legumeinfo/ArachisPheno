@@ -89,7 +89,7 @@ class StudyTable(tables.Table):
     name = tables.LinkColumn("study_detail", args=[A('id')], text=lambda record: record.name, verbose_name="Study Name", order_by="name")
     description = tables.Column(accessor="description", verbose_name="Description", order_by="description")
     phenotypes = tables.Column(accessor="count_phenotypes", verbose_name="#Phenotypes", order_by="phenotype")
-    update_date = tables.DateTimeColumn(accessor="update_date", verbose_name="Date Added", order_by="update_date",format="M/d/Y")
+    update_date = tables.DateTimeColumn(accessor="update_date", verbose_name="Date Added", order_by="update_date",format="M d, Y")
 
     class Meta:
         attrs = {"class": "striped"}
@@ -101,7 +101,7 @@ class RNASeqStudyTable(tables.Table):
     name = tables.LinkColumn("study_detail", args=[A('id')], text=lambda record: record.name, verbose_name="Study Name", order_by="name")
     description = tables.Column(accessor="description", verbose_name="Description", order_by="description")
     phenotypes = tables.Column(accessor="rna_count", verbose_name="#RNASeqs", order_by="rnaseq")
-    update_date = tables.DateTimeColumn(accessor="update_date", verbose_name="Date Added", order_by="update_date",format="M/d/Y")
+    update_date = tables.DateTimeColumn(accessor="update_date", verbose_name="Date Added", order_by="update_date",format="M d, Y")
 
 
     class Meta:

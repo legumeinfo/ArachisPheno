@@ -67,7 +67,7 @@ def home(request):
     if len(Study.objects.all()) == 0 :
         stats['last_update'] = '--'
     else :
-        stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b/%d/%Y')
+        stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b %d, %Y')
     context = { 'search_form': search_form, 'stats': stats, 'is_rnaseq': False }
     context.update(authentication_context(request))
     return render(request, 'home/home.html', context)
@@ -86,7 +86,7 @@ def home_rnaseq(request):
     if len(Study.objects.all()) == 0 :
         stats['last_update'] = '--'
     else :
-        stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b/%d/%Y')
+        stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b %d, %Y')
     context = { 'search_form': search_form, 'stats': stats, 'is_rnaseq': True }
     context.update(authentication_context(request))
     return render(request, 'home/home_rnaseq.html', context)
