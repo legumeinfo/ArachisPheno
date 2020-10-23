@@ -91,6 +91,9 @@ class StudyTable(tables.Table):
     phenotypes = tables.Column(accessor="count_phenotypes", verbose_name="#Phenotypes", order_by="phenotype")
     update_date = tables.DateTimeColumn(accessor="update_date", verbose_name="Date Added", order_by="update_date",format="M d, Y")
 
+    def render_description(self, record) :
+        return mark_safe(record.description)
+
     class Meta:
         attrs = {"class": "striped"}
 
@@ -103,6 +106,8 @@ class RNASeqStudyTable(tables.Table):
     phenotypes = tables.Column(accessor="rna_count", verbose_name="#RNASeqs", order_by="rnaseq")
     update_date = tables.DateTimeColumn(accessor="update_date", verbose_name="Date Added", order_by="update_date",format="M d, Y")
 
+    def render_description(self, record) :
+        return mark_safe(record.description)
 
     class Meta:
         attrs = {"class": "striped",  "is_rnaseq": True}
