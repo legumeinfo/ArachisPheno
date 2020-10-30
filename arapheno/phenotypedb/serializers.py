@@ -41,7 +41,7 @@ class PhenotypeListSerializer(serializers.ModelSerializer):
                   'eo_definition','eo_source_acronym','eo_source_name','eo_source_url',
                   'uo_term','uo_name','uo_comment',
                   'uo_definition','uo_source_acronym','uo_source_name','uo_source_url',
-                  'integration_date', 'num_values', 'number_replicates')
+                  'integration_date', 'num_values')
 
     def get_species(self,obj):
         return obj.species.genus + " " + obj.species.species + " (NCBI: " + str(obj.species.ncbi_id) + ")"

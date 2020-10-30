@@ -154,7 +154,7 @@
                         <br><br>
                         <strong>For JSON format: &lt;BASE_URL&gt;/rest/accession/&lt;q&gt;.json</strong>
                         <br><br>
-                        Example: <a href="/rest/accession/PI119083.json">&lt;BASE_URL&gt;/rest/accession/PI119083.json</a>
+                        Example: <a href="/rest/accession/PI 497318.json">&lt;BASE_URL&gt;/rest/accession/PI 497318.json</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -169,7 +169,7 @@
                         <br><br>
                         <strong>For JSON format: &lt;BASE_URL&gt;/rest/accession/&lt;q&gt;/phenotypes.json</strong>
                         <br><br>
-                        Example: <a href="/rest/accession/PI119083/phenotypes.json">&lt;BASE_URL&gt;/rest/accession/PI119083/phenotypes.json</a>
+                        Example: <a href="/rest/accession/PI 497318/phenotypes.json">&lt;BASE_URL&gt;/rest/accession/PI 497318/phenotypes.json</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>
@@ -179,22 +179,20 @@
                         <div class="collapsible-header"><i class="material-icons">code</i>How to get all phenotypes for a list of accessions?</div>
                         <div class="collapsible-body"><p>You send a <code>POST</code> request with a list of accession ids (comma-separated) and the REST endpoint will return a map with accession_id &rarr; list of phenotypes.
                         <br>
-                        Example (cURL): <code>curl --request POST --url &lt;BASE_URL&gt;/rest/accession/phenotypes/ --header 'content-type: text/plain' --data 'PI118474,PI119083'</code>
+                        Example (cURL): <code>curl --request POST --url &lt;BASE_URL&gt;/rest/accession/phenotypes/ --header 'content-type: text/plain' --data 'PI 497318,PI 497395'</code>
                         <br><br>
                         The response will contain a JSON dict with the following format:
                         </p>
                         <pre>
     {
-        "PI118474": [
-            ...
-            {...,"phenotype_id":3,"name":"seed volume avg",...},
-            {...,"phenotype_id":4,"name":"protein",...},
+        "PI 497318": [
+            {...,"phenotype_id":1,"name":"#1_kernel_weight",...},
+            {...,"phenotype_id":2,"name":"all_other_seed_types_weight",...},
             ...
         ],
-        "PI119083": [
-            ...
-            {...,"phenotype_id":3,"name":"seed volume avg",...},
-            {...,"phenotype_id":16,"name":"leaf length avg",...},
+        "PI 497395": [
+            {...,"phenotype_id":1,"name":"#1_kernel_weight",...},
+            {...,"phenotype_id":2,"name":"all_other_seed_types_weight",...},
             ...
         ],
         ...
