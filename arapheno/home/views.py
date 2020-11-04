@@ -17,7 +17,11 @@ from django_tables2 import RequestConfig
 
 # Base context for all views: whether to show the main menu bar
 def authentication_context(request) :
-    return { 'show_menu_bar': request.user.is_authenticated or not REQUIRE_USER_AUTHENTICATION }
+    context = {
+        'show_menu_bar': request.user.is_authenticated or not REQUIRE_USER_AUTHENTICATION,
+        'show_logout_menu_item': request.user.is_authenticated and REQUIRE_USER_AUTHENTICATION
+    }
+    return context
 
 '''
 Login View of ArachisPheno
