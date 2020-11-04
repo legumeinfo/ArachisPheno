@@ -53,7 +53,7 @@ class PhenotypeTable(ReducedPhenotypeTable):
 
 class AccessionPhenotypeTable(PhenotypeTable):
     """
-    Table that is displayed in the accession detial view
+    Table that is displayed in the accession detail view
     """
     value = tables.Column(empty_values=(),verbose_name='Value (mean)', orderable=False)
 
@@ -66,6 +66,7 @@ class AccessionPhenotypeTable(PhenotypeTable):
         if not values:
             return "N/A"
         return str(np.mean(values))
+
 class ReducedRNASeqTable(tables.Table):
     """
     Table that is displayed in the Study detail view
