@@ -8,6 +8,5 @@ AraPheno python code based on Django 1.9.6.
 # ArachisPheno  
 
 ## About  
-**ArachisPheno** is an adaptation of **AraPheno** (https://arapheno.1001genomes.org/) at **PeanutBase**(https://peanutbase.org), for serving phenotype data for Arachis species (peanut and its relatives).
-
+**ArachisPheno** is an adaptation of **AraPheno** (https://arapheno.1001genomes.org) at **PeanutBase** (https://peanutbase.org), for serving phenotype data for _Arachis_ species (peanut and its relatives).
 
