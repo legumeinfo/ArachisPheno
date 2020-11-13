@@ -1,4 +1,4 @@
-"""ArachisPheno URL Configuration
+"""URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -17,6 +17,7 @@ import autocomplete_light.shortcuts as al
 import home.views
 import phenotypedb.rest as rest
 import phenotypedb.views
+from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
@@ -25,7 +26,7 @@ from django.views.decorators.csrf import csrf_exempt
 from utils.statistics import SUPPORTED_TRANSFORMATIONS
 admin.autodiscover()
 al.autodiscover()
-schema_view = get_swagger_view(title='ArachisPheno API')
+schema_view = get_swagger_view(title=settings.APP_NAME + ' API')
 
 ACCESSION_ID_REGEX = r"PI [0-9]{6}"
 ID_REGEX = r"[0-9]+"

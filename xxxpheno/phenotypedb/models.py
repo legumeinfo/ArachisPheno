@@ -14,8 +14,6 @@ from django.db import connection, models
 from django.utils.safestring import mark_safe
 from django.conf import settings
 
-from arapheno.settings.private_settings import BASE_URL
-
 SUBMITTED = 0
 IN_CURATION = 1
 PUBLISHED = 2
@@ -276,11 +274,11 @@ class Submission(models.Model):
     def get_email_subject(self):
         """Returns the email subject that will be send upon updates"""
         if self.status == SUBMITTED:
-            return "Study submitted to ArachisPheno"
+            return "Study submitted to " + settings.APP_NAME
         elif self.status == IN_CURATION:
-            return "Changes to ArachisPheno study requested"
+            return "Changes to " + settings.APP_NAME + " study requested"
         elif self.status == PUBLISHED:
-            return "Study published in ArachisPheno"
+            return "Study published in " + settings.APP_NAME
         raise Exception('Not supported')
 
     def get_email_text(self):
@@ -299,10 +297,10 @@ class Submission(models.Model):
 
             Thank you for your patience,
 
-            ArachisPheno Team
+            %(app_name)s Team
             ''' % {'firstname':self.firstname, 'lastname':self.lastname,
-                'study_name':self.study.name, 'submission_url':'%s/submission'%(BASE_URL),
-                'submission_id':self.id}
+                'study_name':self.study.name, 'submission_url':'%s/submission'%(settings.BASE_URL),
+                'submission_id':self.id, 'app_name':settings.APP_NAME}
         elif self.status == IN_CURATION:
             return '''
             Dear %(firstname)s %(lastname)s,
@@ -313,10 +311,10 @@ class Submission(models.Model):
 
             Thank you for your patience,
 
-            ArachisPheno Team
+            %(app_name)s Team
             ''' % {'firstname':self.firstname, 'lastname':self.lastname,
-                'study_name':self.study.name, 'submission_url':'%s/submission'%(BASE_URL),
-                'submission_id':self.id}
+                'study_name':self.study.name, 'submission_url':'%s/submission'%(settings.BASE_URL),
+                'submission_id':self.id, 'app_name':settings.APP_NAME}
         elif self.status == PUBLISHED:
             return '''
             Dear %(firstname)s %(lastname)s,
@@ -327,10 +325,10 @@ class Submission(models.Model):
 
             Thank you for your submission,
 
-            ArachisPheno Team
+            %(app_name)s Team
             ''' % {'firstname':self.firstname, 'lastname':self.lastname,
-                'study_name':self.study.name, 'study_url':'%s/study'%(BASE_URL),
-                'study_id':self.study.id}
+                'study_name':self.study.name, 'study_url':'%s/study'%(settings.BASE_URL),
+                'study_id':self.study.id, 'app_name':settings.APP_NAME}
         raise Exception('Not supported')
 
     def __unicode__(self):

@@ -5,7 +5,6 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 
-from arapheno.settings.private_settings import REQUIRE_USER_AUTHENTICATION
 from decorators import login_if_required
 from forms import GlobalSearchForm, RNASeqGlobalSearchForm
 
@@ -15,22 +14,47 @@ from phenotypedb.tables import PhenotypeTable, StudyTable, AccessionTable, Ontol
 from django.db.models import Count
 from django_tables2 import RequestConfig
 
-# Base context for all views: whether to show the main menu bar
-def authentication_context(request) :
+# Context for application settings
+def application_context() :
     context = {
-        'show_menu_bar': request.user.is_authenticated or not REQUIRE_USER_AUTHENTICATION,
-        'show_logout_menu_item': request.user.is_authenticated and REQUIRE_USER_AUTHENTICATION
+        'app_name': settings.APP_NAME,
+        'app_prefix': settings.APP_PREFIX,
+        'app_background_image': settings.APP_BACKGROUND_IMAGE,
+        'app_css_filename': settings.APP_CSS_FILENAME,
+        'app_species': settings.APP_SPECIES,
+        'app_title_background_color': settings.APP_TITLE_BACKGROUND_COLOR,
+        'app_title_width': settings.APP_TITLE_WIDTH,
+        'app_title_icon': settings.APP_TITLE_ICON,
+        'app_title_icon_width': settings.APP_TITLE_ICON_WIDTH,
+        'app_title_icon_height': settings.APP_TITLE_ICON_HEIGHT,
+        'app_twitter_feed': settings.APP_TWITTER_FEED,
+        'app_twitter_text': settings.APP_TWITTER_TEXT,
+        'app_correlation_phenotype_ids': settings.APP_CORRELATION_PHENOTYPE_IDS
     }
     return context
 
+# Context for whether to show the main menu bar and its individual items
+def authentication_context(request) :
+    context = {
+        'show_menu_bar': request.user.is_authenticated or not settings.REQUIRE_USER_AUTHENTICATION,
+        'show_logout_menu_item': request.user.is_authenticated and settings.REQUIRE_USER_AUTHENTICATION
+    }
+    return context
+
+# Base context for (nearly) all views
+def base_context(request) :
+    context = application_context()
+    context.update(authentication_context(request))
+    return context
+
 '''
-Login View of ArachisPheno
+Login View
 '''
 def login_request(request) :
     errmsg = None
     INVALID_USERNAME_OR_PASSWORD = 'Invalid username or password - please try again.'
 
-    if not REQUIRE_USER_AUTHENTICATION :
+    if not settings.REQUIRE_USER_AUTHENTICATION :
         return redirect(settings.LOGIN_REDIRECT_URL)
 
     if request.method == 'POST':
@@ -52,10 +76,11 @@ def login_request(request) :
         'form': form,
         'errmsg': errmsg,
     }
+    context.update(application_context())
     return render(request, 'home/login.html', context)
 
 '''
-Home View of ArachisPheno
+Home View
 '''
 @login_if_required
 def home(request):
@@ -73,7 +98,7 @@ def home(request):
     else :
         stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b %d, %Y')
     context = { 'search_form': search_form, 'stats': stats, 'is_rnaseq': False }
-    context.update(authentication_context(request))
+    context.update(base_context(request))
     return render(request, 'home/home.html', context)
 
 @login_if_required
@@ -92,67 +117,67 @@ def home_rnaseq(request):
     else :
         stats['last_update'] = Study.objects.all().order_by("-update_date")[0].update_date.strftime('%b %d, %Y')
     context = { 'search_form': search_form, 'stats': stats, 'is_rnaseq': True }
-    context.update(authentication_context(request))
+    context.update(base_context(request))
     return render(request, 'home/home_rnaseq.html', context)
 
 '''
-About View of ArachisPheno
+About View
 '''
 @login_if_required
 def about(request):
-    return render(request, 'home/about.html', authentication_context(request))
+    return render(request, 'home/about.html', base_context(request))
 
 '''
-Links View of ArachisPheno
+Links View
 '''
 @login_if_required
 def links(request):
-    return render(request, 'home/links.html', authentication_context(request))
+    return render(request, 'home/links.html', base_context(request))
 
 '''
-FAQ View of ArachisPheno
+FAQ View
 '''
 @login_if_required
 def faq(request):
-    return render(request, 'home/faq.html', authentication_context(request))
+    return render(request, 'home/faq.html', base_context(request))
 
 '''
-FAQ Content View of ArachisPheno
+FAQ Content View
 '''
 @login_if_required
 def faqcontent(request):
-    return render(request, 'home/faqcontent.html', authentication_context(request))
+    return render(request, 'home/faqcontent.html', base_context(request))
 
 '''
-FAQ Tutorial Content View of ArachisPheno
+FAQ Tutorial Content View
 '''
 @login_if_required
 def faqtutorial(request):
-    return render(request, 'home/tutorials.html', authentication_context(request))
+    return render(request, 'home/tutorials.html', base_context(request))
 
 '''
-FAQ REST Content View of ArachisPheno
+FAQ REST Content View
 '''
 @login_if_required
 def faqrest(request):
-    return render(request, 'home/faqrest.html', authentication_context(request))
+    return render(request, 'home/faqrest.html', base_context(request))
 
 '''
-FAQ Cite Content View of ArachisPheno
+FAQ Cite Content View
 '''
 @login_if_required
 def faqcite(request):
-    return render(request, 'home/faqcite.html', authentication_context(request))
+    return render(request, 'home/faqcite.html', base_context(request))
 
 '''
-FAQ Issue Content View of ArachisPheno
+FAQ Issue Content View
 '''
 @login_if_required
 def faqissue(request):
-    return render(request, 'home/faqissue.html', authentication_context(request))
+    return render(request, 'home/faqissue.html', base_context(request))
 
 '''
-Search Result View for Global Search in ArachisPheno
+Search Result View for Global Search
 '''
 @login_if_required
 def SearchResults(request,query=None):
@@ -196,7 +221,7 @@ def SearchResults(request,query=None):
     variable_dict['nontologies'] = ontologies.count()
     variable_dict['download_url'] = download_url
 
-    variable_dict.update(authentication_context(request))
+    variable_dict.update(base_context(request))
     return render(request,'home/search_results.html',variable_dict)
 
 # RNASeq search
@@ -236,16 +261,16 @@ def SearchResultsRNASeq(request,query=None):
     variable_dict['naccessions'] = accessions.count()
     variable_dict['download_url'] = download_url
 
-    variable_dict.update(authentication_context(request))
+    variable_dict.update(base_context(request))
     return render(request,'home/rnaseq_search_results.html',variable_dict)
 
 '''
-Logout View of ArachisPheno
+Logout View
 '''
 def logout_request(request) :
-    if not REQUIRE_USER_AUTHENTICATION :
+    if not settings.REQUIRE_USER_AUTHENTICATION :
         return redirect(settings.LOGIN_REDIRECT_URL)
 
     logout(request)
-    return render(request, 'home/logout.html', {})
+    return render(request, 'home/logout.html', application_context())
 

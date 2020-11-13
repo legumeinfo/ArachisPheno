@@ -5,9 +5,9 @@
 <div id="index-banner" class="parallax-container" style="height:80px">
     <div class="section no-pad-bot">
         <div class="container">
-            <!--h1 class="header center white-text text-lighten-2">ArachisPheno</h1>
+            <!--h1 class="header center white-text text-lighten-2">{{ app_name }}</h1>
             <div class="row center">
-                <h5 class="header col s12 m12 l12 light">ArachisPheno is a public database collection of <em><i>Arachis</i></em> (peanut) phenotypes.</h5>
+                <h5 class="header col s12 m12 l12 light">{{ app_name }} is a public database collection of <em><i>{{ app_prefix }}</i></em> ({{ app_species }}) phenotypes.</h5>
                 <br>
                 <br>
                 <h5 class="header col s12 m12 l12 light">This Database allows to search and filter for public phenotypes and to obtain additional meta-information.</h5>
@@ -22,7 +22,7 @@
             </form>
         </div>
     </div>
-    <div class="parallax"><img src="static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 
 <div class="container scale-transition" id="phenotype-container">
@@ -36,7 +36,7 @@
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">view_list</i></h3>
                     <h5 class="center">Public Studies</h5>
-                    <p class="light justify">Browse through all available public <em><i>Arachis</i></em> studies and retrieve additional information.</p>
+                    <p class="light justify">Browse through all available public <em><i>{{ app_prefix }}</i></em> studies and retrieve additional information.</p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown" href="{% url 'studies' %}" id="view_studies_button"><i class="material-icons left">view_list</i>View Studies</a>
             </div>
@@ -44,7 +44,7 @@
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">spa</i></h3>
                     <h5 class="center">Public Phenotypes</h5>
-                    <p class="light justify">Browse through all available public <em><i>Arachis</i></em> phenotypes and studies and retrieve additional information.</p>
+                    <p class="light justify">Browse through all available public <em><i>{{ app_prefix }}</i></em> phenotypes and studies and retrieve additional information.</p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown" href="{% url 'phenotypes' %}" id="view_phenotypes_button"><i class="material-icons left">spa</i>View Phenotypes</a>
             </div>
@@ -52,7 +52,7 @@
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">bubble_chart</i></h3>
                     <h5 class="center">Master Accession Table</h5>
-		    <p class="light">Browse through all <em><i>Arachis</i></em> accessions and find out how many phenotypes are available for each accession.</p>
+		    <p class="light">Browse through all <em><i>{{ app_prefix }}</i></em> accessions and find out how many phenotypes are available for each accession.</p>
                 </div>
 		<a class="waves-effect waves-light btn-large brown" id="view_accession_button" href="{% url 'accessions' %}"><i class="material-icons left">bubble_chart</i>View Accessions</a>
             </div>
@@ -69,7 +69,7 @@
                  <!--div class="icon-block">
                      <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">cloud_download</i></h3>
                      <h5 class="center">Download Database</h5>
-                     <p class="light">Download the full ArachisPheno database, including all phenotypes and meta-information.</p>
+                     <p class="light">Download the full {{ app_name }} database, including all phenotypes and meta-information.</p>
                  </div>
                  <a class="waves-effect waves-light btn-large brown"  href="/static/database.zip" ><i class="material-icons left">cloud_download</i>Download Database</a-->
              </div>
@@ -77,7 +77,7 @@
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">code</i></h3>
                     <h5 class="center">REST API</h5>
-                    <p class="light">Use the REST API to retrieve phenotype data and meta-information from ArachisPheno via URLs.</p>
+                    <p class="light">Use the REST API to retrieve phenotype data and meta-information from {{ app_name }} via URLs.</p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown" id="rest_button" href="/faq/rest/"><i class="material-icons left">code</i>REST API</a>
             </div>
@@ -89,7 +89,7 @@
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">rowing</i></h3>
                     <h5 class="center">Take a Tour</h5>
                     <p class="light">
-                    Take a guided tour through ArachisPheno and familiarize yourself with all available public functions. </p>
+                    Take a guided tour through {{ app_name }} and familiarize yourself with all available public functions. </p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown" id="start_tour" ><i class="material-icons left">rowing</i>Take a Tour</a>
             </div-->
@@ -98,7 +98,7 @@
                 <div class="icon-block">
                     <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">help_outline</i></h3>
                     <h5 class="center">FAQ & Tutorials</h5>
-                    <p class="light">Find detailed help about the functions of ArachisPheno, its integrated data, and frequently asked questions.</p>
+                    <p class="light">Find detailed help about the functions of {{ app_name }}, its integrated data, and frequently asked questions.</p>
                 </div>
                 <a class="waves-effect waves-light btn-large brown modal-trigger" href="#faqmodal" id="faq_button"><i class="material-icons left">help_outline</i>FAQ</a>
             </div>
@@ -109,7 +109,7 @@
                     <div class="icon-block">
                         <h3 class="center brown-text"><i class="material-icons" style="font-size:35px">feedback</i></h3>
                         <h5 class="center">Feedback & Issues</h5>
-                        <p class="light">Submit issues, feedback or any related questions regarding ArachisPheno.</p><br>
+                        <p class="light">Submit issues, feedback or any related questions regarding {{ app_name }}.</p><br>
                     </div>
                     <a class="waves-effect waves-light btn-large brown modal-trigger" href="https://peanutbase.org/contact" id="feedback_button"><i class="material-icons left">feedback</i>Feedback</a>
                 </div>
@@ -120,7 +120,7 @@
 </div>
 
 <div class="parallax-container" style="height:100px">
-    <div class="parallax"><img src="static/img/arachispheno_background.jpg" alt="Unsplashed background img 2"></div>
+    <div class="parallax"><img src="static/img/{{ app_background_image }}" alt="Unsplashed background img 2"></div>
 </div>
 
 <div class="container">
@@ -157,9 +157,9 @@
                 </div-->
                 <div class="card brown lighten-5">
                     <div class="card-content black-text">
-                       <span class="card-title"><i class="material-icons brown-text" style="font-size=50px">new_releases</i> ArachisPheno is online</span>
+                       <span class="card-title"><i class="material-icons brown-text" style="font-size=50px">new_releases</i> {{ app_name }} is online</span>
                         <p class="light">
-                            We are proud to announce the launch of our public peanut phenotype database.
+                            We are proud to announce the launch of our public {{ app_species }} phenotype database.
                         </p>
                     </div>
                 </div>
@@ -176,14 +176,14 @@
 	    </div>
             <div class="col s12 l5 m12">
                 <h5 class="light"><i class="material-icons brown-text" style="font-size=35px">insert_chart</i> Twitter</h5><div class="card brown lighten-5">
-       	    <a class="twitter-timeline" href="https://twitter.com/peanutbaseorg?ref_src=twsrc%5Etfw" data-tweet-limit="3">Tweets by PeanutBase</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <a class="twitter-timeline" href="{{ app_twitter_feed }}" data-tweet-limit="3">{{ app_twitter_text }}</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 		</div>
 	    </div>
 	</div>
     </div>
 </div>
 <div class="parallax-container" style="height:100px">
-    <div class="parallax"><img src="static/img/arachispheno_background.jpg" alt="Unsplashed background img 2"></div>
+    <div class="parallax"><img src="static/img/{{ app_background_image }}" alt="Unsplashed background img 2"></div>
 </div>
 
 <script type="text/javascript">
@@ -210,7 +210,7 @@
         var steps = [
             {
                 element: '.header',
-                intro: 'ArachisPheno is a public database collection of <em><i>Arachis</i></em> (peanut) phenotypes. This tour will show the important features.'
+                intro: '{{ app_name }} is a public database collection of <em><i>{{ app_prefix }}</i></em> ({{ app_species }}) phenotypes. This tour will show the important features.'
             },
             {
                 element: '#search_box',
@@ -218,11 +218,11 @@
             },
             {
                 element: '#faq_button',
-                intro: 'The FAQ section provides tutorials of the various features of ArachisPheno.'
+                intro: 'The FAQ section provides tutorials of the various features of {{ app_name }}.'
             },
             {
                 element: '#rest_button',
-                intro: 'ArachisPheno provides a well-documented REST API for programmatic access to the data.'
+                intro: '{{ app_name }} provides a well-documented REST API for programmatic access to the data.'
             },
             {
                 element: '#view_phenotypes_button',

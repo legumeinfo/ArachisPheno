@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ArachisPheno - RNAseq {{object.name}} {% endblock title %}
+{% block title %}{{ app_name }} - RNAseq {{object.name}} {% endblock title %}
 
 {% block content %}
 {% with citation=rnaseq type='rnaseq' publications=rnaseq.study.publications submission=rnaseq.study.submission%}
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 
 <div id="downloadmodal" class="modal">

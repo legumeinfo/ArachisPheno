@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}ArachisPheno - Login{% endblock title %}
+{% block title %}{{ app_name }} - Login{% endblock title %}
 
 {% block content %}
 
 <div id="index-banner" class="parallax-container" style="height:320px">
     <div class="section no-pad-bot">
         <div class="row center">
-            <h5 class="header col s12 m12 l12 light">Welcome to ArachisPheno! Please login.</h5>
+            <h5 class="header col s12 m12 l12 light">Welcome to {{ app_name }}! Please login.</h5>
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
     <div class="container" style="height:100px">
         {% if errmsg %}
             <p style="color: yellow">{{ errmsg }}</p>

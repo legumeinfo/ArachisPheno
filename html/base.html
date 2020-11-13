@@ -5,10 +5,10 @@
 <html>
     <head>
         <!--Import Google Icon Font-->
-        <title>{% block title %}ArachisPheno - A public phenotype database for Peanut{% endblock title %}</title>
+        <title>{% block title %}{{ app_name }} - A public phenotype database for {{ app_species }}{% endblock title %}</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
-        <link type="text/css" rel="stylesheet" href="/static/css/arachispheno.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="/static/css/{{ app_css_filename }}" media="screen,projection"/>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/intro.js/2.1.0/intro.min.js"></script>
@@ -53,16 +53,16 @@
                 <div id="title-container" class="container">
                     <div class="switch">
                         <label>
-                            <div class="col s3" style="width:35%; background-color: #4D0D00">
-                            <img src="/static/img/peanutbase_logo.png" width="49" height="42" style="vertical-align: middle"> &nbsp;
-                            <a id="logo-container" href="/" class="brand-logo {{ is_rnaseq|yesno:'grey-text text-lighten-1,white-text' }}">ArachisPheno</a>
+                            <div class="col s3" style="width:{{ app_title_width }}; background-color: {{ app_title_background_color }}">
+                            <img src="/static/img/{{ app_title_icon }}" width="{{ app_title_icon_width }}" height="{{ app_title_icon_height }}" style="vertical-align: middle"> &nbsp;
+                            <a id="logo-container" href="/" class="brand-logo {{ is_rnaseq|yesno:'grey-text text-lighten-1,white-text' }}">{{ app_name }}</a>
                         </div>
                         <!--div class="col s1 hide-on-med-and-down">
                                 <input type="checkbox" {% if is_rnaseq %} checked {% endif %} }} id="rnaseq-input-base">
                                 <span id="rnaseq-lever" class="lever" ></span>
                             </div>
                             <div class="col s3 hide-on-med-and-down">
-                                    <a id="other-view" href="/rnaseq" class="brand-logo {{ is_rnaseq|yesno:'black-text,blue-text text-lighten-4' }}">Arachis<b class="{{ is_rnaseq|yesno:'blue-text text-darken-3,' }}">RNASeq</b></a>
+                                    <a id="other-view" href="/rnaseq" class="brand-logo {{ is_rnaseq|yesno:'black-text,blue-text text-lighten-4' }}">{{ app_prefix }}<b class="{{ is_rnaseq|yesno:'blue-text text-darken-3,' }}">RNASeq</b></a>
                                 </div-->
                         </label>
                     </div>
@@ -109,7 +109,7 @@
                     <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                     <li>
-                    <a class="collapsible-header waves-effect waves-grey"><strong>ArachisPheno Data</strong></a>
+                    <a class="collapsible-header waves-effect waves-grey"><strong>{{ app_name }} Data</strong></a>
                     <div class="collapsible-body" style="display: block;">
                         <ul>
                         <li><a class="black-text" href="/studies">View Studies</a></li>
@@ -123,7 +123,7 @@
 		    <li class="divider"></li>
                     <ul class="collapsible collapsible-accordion">
                     <li>
-                    <a class="collapsible-header waves-effect waves-grey"><strong>ArachisRNASeq</strong></a>
+                    <a class="collapsible-header waves-effect waves-grey"><strong>{{ app_prefix }}RNASeq</strong></a>
                     <div class="collapsible-body" style="display: block;">
                         <ul>
                             <li><a class="black-text" href="/rnaseq_studies">View RNASeq Studies</a></li>
@@ -136,7 +136,7 @@
                     <li class="divider"></li>
                     <ul class="collapsible collapsible-accordion">
                     <li>
-                    <a class="collapsible-header waves-effect waves-grey"><strong>ArachisPheno Tools</strong></a>
+                    <a class="collapsible-header waves-effect waves-grey"><strong>{{ app_name }} Tools</strong></a>
                     <div class="collapsible-body" style="display: block;">
                         <ul>
                             <li><a class="black-text" href="/correlation">Phenotype Correlation</a></li>
@@ -172,7 +172,7 @@
             </div>
             <div id="footerdark" class="footer-copyright {{ is_rnaseq|yesno:'blue darken-3,brown' }}">
                 <div class="container">
-            ArachisPheno is a public database for <em><i>Arachis</i></em> (peanut) phenotypes (&copy; 2020)
+            {{ app_name }} is a public database for <em><i>{{ app_prefix }}</i></em> ({{ app_species }}) phenotypes (&copy; 2020)
             <!--a class="modal-trigger waves-effect waves-light white-text text-lighten-4 right" href="#footermodal">Impressum</a>
             <div class="version hidden-sm-and-down">
                 <ul>

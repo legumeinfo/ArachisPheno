@@ -13,14 +13,14 @@ services:
         source: static_files
         target: /srv/static
       - type: bind
-        source: ./arapheno/db.sqlite3
-        target: /srv/web/arapheno/db.sqlite3
+        source: ./xxxpheno/db.sqlite3
+        target: /srv/web/xxxpheno/db.sqlite3
     environment:
       - DATACITE_USERNAME=${DATACITE_USERNAME}
       - DATACITE_PASSWORD=${DATACITE_PASSWORD}
       - EMAIL_HOST=${EMAIL_HOST}
       - EMAIL_USER=${EMAIL_USER}
-      - DJANGO_SETTINGS_MODULE=arapheno.settings.dev
+      - DJANGO_SETTINGS_MODULE=xxxpheno.settings.dev
       # - ALLOWED_HOSTS=${ALLOWED_HOSTS}
       - ALLOWED_HOSTS=dev-arachispheno
     depends_on:
@@ -40,7 +40,7 @@ services:
         volume:
           nocopy: true
       - type: bind
-        source: ./arachispheno.conf
+        source: ./xxxpheno.conf
         target: /etc/nginx/conf.d/default.conf
         read_only: true
 volumes:

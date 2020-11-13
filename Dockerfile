@@ -19,8 +19,8 @@ ENV BUILD_NUMBER $BUILD_NUMBER
 ARG BUILD_URL
 ENV BUILD_URL $BUILD_URL
 
-RUN /srv/web/write_version.sh /srv/web/arapheno/phenotypedb/__init__.py
+RUN /srv/web/write_version.sh /srv/web/xxxpheno/phenotypedb/__init__.py
 
-WORKDIR /srv/web/arapheno
+WORKDIR /srv/web/xxxpheno
 ENTRYPOINT ["/srv/web/web-entrypoint.sh"]
 CMD ["manage.py"]

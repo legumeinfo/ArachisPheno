@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ArachisPheno - REST API{% endblock title %}
+{% block title %}{{ app_name }} - REST API{% endblock title %}
 
 {% block content %}
 <div id="index-banner" class="parallax-container" style="height:130px">
@@ -8,7 +8,7 @@
         <div class="container">
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 <div class="container">
     <div class="section">
@@ -24,7 +24,7 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">code</i>What is a REST API?</div>
                         <div class="collapsible-body"><p>
-                        <b>REST</b> is an abbreviation for <strong>representational state transfer</strong>. It can be used to retrieve data from ArachisPheno
+                        <b>REST</b> is an abbreviation for <strong>representational state transfer</strong>. It can be used to retrieve data from {{ app_name }}
                         using a specially formatted URL. You also can write custom scripts (e.g. in Python, Perl, Java, etc.) to request and download the information you need.
                         <br>
                         <br>
@@ -225,7 +225,7 @@
                         <br><br>
                         <strong>&lt;BASE_URL&gt;/rest/correlation/&lt;query&gt;/</strong>
                         <br><br>
-                        Example: <a href="/rest/correlation/2,3,5,7,11,13,17,19,23,29/">&lt;BASE_URL&gt;/rest/correlation/2,3,5,7,11,13,17,19,23,29/</a>
+                        Example: <a href="/rest/correlation/{{ app_correlation_phenotype_ids }}/">&lt;BASE_URL&gt;/rest/correlation/{{ app_correlation_phenotype_ids }}/</a>
                         <br><br>
                         A more detailed API description can be found here: <a href="/faq/rest/swagger/">API Documentation</a>
                         </p>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load maxmin_tags %}
 
-{% block title %}ArachisPheno - Phenotype {{object.name}} {% endblock title %}
+{% block title %}{{ app_name }} - Phenotype {{object.name}} {% endblock title %}
 
 {% block content %}
 {% with citation=phenotype type='phenotype' publications=phenotype.study.publications submission=phenotype.study.submission%}
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 
 <div id="downloadmodal" class="modal">

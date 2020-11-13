@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ArachisPheno - Ontology {{object.name}} {% endblock title %}
+{% block title %}{{ app_name }} - Ontology {{object.name}} {% endblock title %}
 
 {% block content %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
@@ -11,7 +11,7 @@
             <h5 class="white-text">Ontology: {{ object.name }}</h5>
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 <div class="container ontology-source-container">
     <br>
@@ -66,7 +66,7 @@
         $('#tree').on("changed.jstree", function (e, data) {
             id = data.selected[0];
             showDetailPage(id);
-            window.history.pushState(data.selected[0],'ArachisPheno - Ontology ' + id,'/ontology/{{ object.acronym }}/'+id);
+            window.history.pushState(data.selected[0],'{{ app_name }} - Ontology ' + id,'/ontology/{{ object.acronym }}/'+id);
         });
     });
 </script>

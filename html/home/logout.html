@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}ArachisPheno - Logout{% endblock title %}
+{% block title %}{{ app_name }} - Logout{% endblock title %}
 
 {% block content %}
 
 <div id="index-banner" class="parallax-container" style="height:120px">
     <div class="section no-pad-bot">
         <div class="row center">
-            <h5 class="header col s12 m12 l12 light">Thanks for using ArachisPheno.</h5>
+            <h5 class="header col s12 m12 l12 light">Thanks for using {{ app_name }}.</h5>
             <h5 class="header col s12 m12 l12 light"><a href="{% url 'login' %}">Login again</a></h5>
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 
 <script type="text/javascript">

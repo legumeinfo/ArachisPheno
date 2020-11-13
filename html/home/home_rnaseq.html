@@ -5,9 +5,9 @@
 <div id="index-banner" class="parallax-container" style="height:370px">
     <div class="section no-pad-bot">
         <div class="container">
-            <h1 class="header center white-text text-lighten-2">Arachis<b class="blue-text text-darken-3">RNASeq</b></h1>
+            <h1 class="header center white-text text-lighten-2">{{ app_prefix }}<b class="blue-text text-darken-3">RNASeq</b></h1>
             <div class="row center">
-                <h5 class="header col s12 m12 l12 light">ArachisPheno also contains <em><i>Arachis</i></em> (peanut) RNASeq measurements.</h5>
+                <h5 class="header col s12 m12 l12 light">{{ app_name }} also contains <em><i>{{ app_prefix }}</i></em> ({{ app_species }}) RNASeq measurements.</h5>
                 <br>
                 <br>
                 <h5 class="header col s12 m12 l12 light">This database allows to look for them. </h5>
@@ -22,7 +22,7 @@
             </form>
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 
 <div class="container scale-transition scale-out" id="rnaseq-container">
@@ -33,7 +33,7 @@
                     <div class="icon-block">
                         <h3 class="center blue-text text-darken-3"><i class="material-icons" style="font-size:35px">view_list</i></h3>
                         <h5 class="center">Public RNASeq Studies</h5>
-                        <p class="light justify">Browse through all available public <em><i>Arachis</i></em> RNASeq studies and retrieve additional information.</p>
+                        <p class="light justify">Browse through all available public <em><i>{{ app_prefix }}</i></em> RNASeq studies and retrieve additional information.</p>
                     </div>
                     <a class="waves-effect waves-light btn-large blue darken-3" href="{% url 'rnaseq_studies' %}" id="view_studies_button"><i class="material-icons left">view_list</i>View Studies</a>
                 </div>
@@ -41,7 +41,7 @@
                     <div class="icon-block">
                         <h3 class="center blue-text text-darken-3"><i class="material-icons" style="font-size:35px">blur_on</i></h3>
                         <h5 class="center">Public RNASeq data</h5>
-                        <p class="light justify">Browse through all available public <em><i>Arachis</i></em> RNASeq values and retrieve additional information.</p>
+                        <p class="light justify">Browse through all available public <em><i>{{ app_prefix }}</i></em> RNASeq values and retrieve additional information.</p>
                     </div>
                     <a class="waves-effect waves-light btn-large blue darken-3" href="{% url 'rnaseqs' %}" id="view_rnaseqs_button"><i class="material-icons left">blur_on</i>View RNASeq data</a>
                 </div>
@@ -49,7 +49,7 @@
                     <div class="icon-block">
                         <h3 class="center blue-text"><i class="material-icons" style="font-size:35px">help_outline</i></h3>
                         <h5 class="center">FAQ & Tutorials</h5>
-                        <p class="light">Find detailed help about the functions of ArachisPheno, its integrated data, and frequently asked questions.</p>
+                        <p class="light">Find detailed help about the functions of {{ app_name }}, its integrated data, and frequently asked questions.</p>
                     </div>
                     <a class="waves-effect waves-light btn-large blue darken-3 modal-trigger" href="#faqmodal" id="faq_button"><i class="material-icons left">help_outline</i>FAQ</a>
                 </div>
@@ -78,7 +78,7 @@
 </div>
 
 <div class="parallax-container" style="height:100px">
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 2"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 2"></div>
 </div>
 
 <div class="container">
@@ -115,9 +115,9 @@
                 </div-->
                 <div class="card brown lighten-5">
                     <div class="card-content black-text">
-                       <span class="card-title"><i class="material-icons blue-text text-darken-3" style="font-size=50px">new_releases</i> ArachisPheno is online</span>
+                       <span class="card-title"><i class="material-icons blue-text text-darken-3" style="font-size=50px">new_releases</i> {{ app_name }} is online</span>
                         <p class="light">
-                            We are proud to announce the launch of our public peanut phenotype database.
+                            We are proud to announce the launch of our public {{ app_species }} phenotype database.
                         </p>
                     </div>
                 </div>
@@ -133,14 +133,14 @@
             </div>
             <div class="col s12 l5 m12">
                 <h5 class="light"><i class="material-icons blue-text text-darken-3" style="font-size=35px">insert_chart</i> Twitter</h5><div class="card brown lighten-5">
-	    <a class="twitter-timeline" href="https://twitter.com/peanutbaseorg?ref_src=twsrc%5Etfw" data-tweet-limit="3">Tweets by PeanutBase</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	    <a class="twitter-timeline" href="{{ app_twitter_feed }}" data-tweet-limit="3">{{ app_twitter_text }}</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="parallax-container" style="height:100px">
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 2"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 2"></div>
 </div>
 
 <script type="text/javascript">
@@ -163,7 +163,7 @@
         var steps = [
             {
                 element: '.header',
-                intro: 'ArachisPheno is a public database collection of <em><i>Arachis</i></em> (peanut) phenotypes. This tour will show the important features.'
+                intro: '{{ app_name }} is a public database collection of <em><i>{{ app_prefix }}</i></em> ({{ app_species }}) phenotypes. This tour will show the important features.'
             },
             {
                 element: '#search_box',
@@ -171,11 +171,11 @@
             },
             {
                 element: '#faq_button',
-                intro: 'The FAQ section provides tutorials of the various features of ArachisPheno.'
+                intro: 'The FAQ section provides tutorials of the various features of {{ app_name }}.'
             },
             {
                 element: '#rest_button',
-                intro: 'ArachisPheno provides a well-documented REST API for programmatic access to the data.'
+                intro: '{{ app_name }} provides a well-documented REST API for programmatic access to the data.'
             },
             {
                 element: '#view_phenotypes_button',

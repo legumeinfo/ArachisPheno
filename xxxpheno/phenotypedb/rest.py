@@ -30,7 +30,6 @@ import scipy.stats as stats
 from django.conf import settings
 
 from home.decorators import login_if_required
-from arapheno.settings.private_settings import REQUIRE_USER_AUTHENTICATION
 
 import re,os,array
 import tempfile
@@ -845,8 +844,8 @@ def generate_database_dump():
     """
     # destination for archive
     dest_dir = settings.STATICFILES_DIRS[0]
-    arachispheno_filename = "database"
-    output_filename = os.path.join(dest_dir, '%s.zip' % arachispheno_filename)
+    database_filename = "database"
+    output_filename = os.path.join(dest_dir, '%s.zip' % database_filename)
 
     # create temporary folder
     folder = tempfile.mkdtemp()
@@ -864,7 +863,7 @@ def generate_database_dump():
     _create_phenotypes_files(studies, folder)
 
     # zip it
-    output_filename = shutil.make_archive(arachispheno_filename,"zip",folder)
+    output_filename = shutil.make_archive(database_filename, "zip", folder)
     shutil.move(output_filename, os.path.join(dest_dir, os.path.basename(output_filename)))
 
     # remove temporary folder

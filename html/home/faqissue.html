@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ArachisPheno - How to report feedback and issues?{% endblock title %}
+{% block title %}{{ app_name }} - How to report feedback and issues?{% endblock title %}
 
 {% block content %}
 <div id="index-banner" class="parallax-container" style="height:130px">
@@ -8,7 +8,7 @@
         <div class="container">
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 <div class="container">
     <div class="section">
@@ -23,7 +23,7 @@
                     <p>
 		    <h5>Reporting Issues and Bugs</h5>
 		    <div class="citation">
-			Issues, bugs or any other kind of problems can be submitted on GitHub using this project&rsquo;s <a target="_blank" href="https://github.com/legumeinfo/ArachisPheno/issues">GitHub Issue Tracker</a>
+			Issues, bugs or any other kind of problems can be submitted on GitHub using this project&rsquo;s <a target="_blank" href="https://github.com/legumeinfo/{{ app_name }}/issues">GitHub Issue Tracker</a>
 			<br><br>
 			If you do not have a GitHub account, you can use the feedback submission form: <a href="/feedback/">Submit Feedback or Issues</a>
 		    </div>

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION_FILE=${1:-arapheno/phenotypedb/__init__.py}
+VERSION_FILE=${1:-xxxpheno/phenotypedb/__init__.py}
 
 cat <<EOF > $VERSION_FILE
 # DON'T MODIFY THIS FILE. Version and git commit will be written by build pipeline

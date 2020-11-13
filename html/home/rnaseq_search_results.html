@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ArachisPheno - Search Results{% endblock title %}
+{% block title %}{{ app_name }} - Search Results{% endblock title %}
 
 {% load render_table from django_tables2 %}
 
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 
 <div id="downloadmodal" class="modal">
@@ -116,11 +116,11 @@
         footerdark.className = footerdark.className.replace("brown", "blue darken-3");
         // change header
         var title = document.getElementById('logo-container')
-        title.innerHTML = 'ArachisPheno <b class="blue-text text-darken-3">RNASeq</b>'
+        title.innerHTML = '{{ app_name }} <b class="blue-text text-darken-3">RNASeq</b>'
         title.href = '/rnaseq'
 
         var other = document.getElementById('other-view')
-        other.innerHTML = 'ArachisPheno'
+        other.innerHTML = '{{ app_name }}'
         other.className = other.className.replace('blue-text text-lighten-4', 'grey-text text-lighten-1')
         other.href = '/'
         // paginate color

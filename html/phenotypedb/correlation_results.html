@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ArachisPheno - Phenotype Correlation Wizard {% endblock title %}
+{% block title %}{{ app_name }} - Phenotype Correlation Wizard {% endblock title %}
 
 {% block content %}
 <script type="text/javascript" src="/static/js/d3.min.js"></script>
@@ -13,7 +13,7 @@
         <h5 class="black-text">Phenotype Correlation Results</h5>
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 
 <div class="container">

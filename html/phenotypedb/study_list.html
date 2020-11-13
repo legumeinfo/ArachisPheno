@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ArachisPheno - All public studies {% endblock title %}
+{% block title %}{{ app_name }} - All public studies {% endblock title %}
 
 {% load render_table from django_tables2 %}
 
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="parallax"><img src="/static/img/arachispheno_background.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/static/img/{{ app_background_image }}" alt="Unsplashed background img 1"></div>
 </div>
 
 
