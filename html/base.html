@@ -53,9 +53,10 @@
                 <div id="title-container" class="container">
                     <div class="switch">
                         <label>
-                            <div class="col s3" style="width:{{ app_title_width }}; background-color: {{ app_title_background_color }}">
+                            <div class="col s3" style="width:{{ app_title_width }}; background-color: {{ app_title_background_color }}; color:#fff; display:inline-block; font-size:2.1rem; white-space:nowrap">
                             <img src="/static/img/{{ app_title_icon }}" width="{{ app_title_icon_width }}" height="{{ app_title_icon_height }}" style="vertical-align: middle"> &nbsp;
-                            <a id="logo-container" href="/" class="brand-logo {{ is_rnaseq|yesno:'grey-text text-lighten-1,white-text' }}">{{ app_name }}</a>
+                            <a id="logo-container" href="/" {{ is_rnaseq|yesno:'grey-text text-lighten-1,white-text' }}">{{ app_name }}</a>
+                            &bull; <a href="https://www.peanutbase.org">PeanutBase</a>
                         </div>
                         <!--div class="col s1 hide-on-med-and-down">
                                 <input type="checkbox" {% if is_rnaseq %} checked {% endif %} }} id="rnaseq-input-base">
