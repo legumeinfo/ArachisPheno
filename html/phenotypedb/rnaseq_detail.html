@@ -182,7 +182,7 @@
 
 
 <script type="text/javascript">
-    var geoChrt,geoChartData,histogramChart,histogramData,explorerChart,explorerData, tableChart;
+    var geoChrt,geoChartData,histogramChart,histogramData,tableChart;
     $(document).ready(function(){
         $('.parallax').parallax();
 
@@ -190,15 +190,6 @@
             dimissible:true,
             in_duration: 300,
         });
-
-        $('ul.tabs').on('click', 'a', function(e) {
-            var target = e.currentTarget;
-            if (target.id === 'explorer_link') {
-                width = $('#explorer').width();
-                explorerChart.draw(explorerData,{width:width,height:500});
-            }
-        });
-
     });
     google.load('visualization', '1.0', {'packages':['corechart','geochart','motionchart','table']});
     google.setOnLoadCallback(drawCharts);
@@ -234,7 +225,6 @@
 
         var geoOptions = {};
         var histogramOptions = {height:500,width:"100%",legend: { position: 'none' },hAxis:{title:'RNASeq Value'},vAxis:{title:'Frequency'}};
-        var explorerOptions = {height:500};
         var tableOptions = {height:500, width:"100%",allowHtml:true};
 
         geoChart.draw(geoChartData, geoOptions);
