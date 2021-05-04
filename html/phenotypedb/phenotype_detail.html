@@ -211,7 +211,6 @@
         <div class="col s12">
             <ul class="tabs">
                 <li class="tab col s3"><a href="#histogram" id="histogram_link" class="active brown-text">Histogram</a></li>
-                <li class="tab col s3"><a  href="#explorer" id="explorer_link" class="brown-text">Explorer</a></li>
                 <li class="tab col s3"><a href="#table" id="table_link" class="brown-text">Table</a></li>
                 <div class="indicator brown" style="z-index:1"></div>
             </ul>
@@ -222,16 +221,6 @@
             </h5>
             <div id="histogram_chart" class="chart"></div>
         </div>
-        <div id="explorer" class="col s12" style="height:500px;width:100%;">
-            <div id="explorer_chart" class="chart">
-                <div class="flash_warning">
-                    <h5 id="flash_warning" >
-                        This visualization requires Flash to be active/installed.<br>
-                        If you use Safari, try Firefox or Chrome
-                    </h5>
-                </div>
-            </div>
-        </div>
         <div id="table" class="col s12" style="height:500px">
             <div id="table_chart" class="chart"></div>
         </div>
@@ -240,21 +229,13 @@
 
 
 <script type="text/javascript">
-    var geoChrt,geoChartData,histogramChart,histogramData,explorerChart,explorerData, tableChart;
+    var geoChrt,geoChartData,histogramChart,histogramData,tableChart;
     $(document).ready(function(){
         $('.parallax').parallax();
 
         $('.modal-trigger').leanModal({
             dimissible:true,
             in_duration: 300,
-        });
-
-        $('ul.tabs').on('click', 'a', function(e) {
-            var target = e.currentTarget;
-            if (target.id === 'explorer_link') {
-                width = $('#explorer').width();
-                explorerChart.draw(explorerData,{width:width,height:500});
-            }
         });
 
         if (RegExp('multipage', 'gi').test(window.location.search)) {
@@ -277,23 +258,15 @@
                     position: 'top'
                 },
                 {
-                    element: '#explorer_chart',
-                    intro: 'This <b>Explorer</b> chart combines the phenotype values with information about the corresponding accessions, in order to reveal interesting patterns. The user can choose between viewing the data as a bar chart or as a bubble chart. <b>Note: the chart requires Flash.</b>',
-                    position: 'top'
-                },
-                {
                     element: '#table_chart',
-                    intro: 'The same information as in the previous Explorer chart is shown in tabular form.',
+                    intro: 'The information is shown in tabular form.',
                     position: 'top'
                 }
 
             ];
             var intro = introJs();
             intro.setOptions({steps:steps}).onbeforechange(function(target) {
-                if (target.id === 'explorer_chart') {
-                     $('ul.tabs').tabs('select_tab', 'explorer');
-                }
-                else if (target.id == 'table_chart') {
+                if (target.id == 'table_chart') {
                     $('ul.tabs').tabs('select_tab', 'table');
                 }
             });
@@ -311,7 +284,6 @@
     function drawCharts() {
         geoChart =  new google.visualization.GeoChart(document.getElementById('geo_chart'));
         histogramChart =  new google.visualization.Histogram(document.getElementById('histogram_chart'));
-        explorerChart = new google.visualization.MotionChart(document.getElementById('explorer_chart'));
         tableChart = new google.visualization.Table(document.getElementById('table_chart'));
 
         {% autoescape off %}
@@ -326,16 +298,6 @@
           ['Phenotype', 'Frequency'],
           {% for item in object.phenotypevalue_set.all %}[ "{{ item.obs_unit.accession.name }} ({{ item.id }})", {{ item.value }} ],{% endfor %}
         ],false);
-
-        explorerData = google.visualization.arrayToDataTable([
-          ['ID Name Phenotype','Date','Longitude','Latitude','Phenotype','Accession','Country'],
-          {% for item in pheno_acc_infos %}
-             [ "{{ item.obs_unit.accession.name }} ID:{{ item.obs_unit.accession.id }} Phenotype: {{ item.value }}"
-              ,new Date(1900,1,1), {{ item.obs_unit.accession.longitude | default_if_none:"null" }}, {{ item.obs_unit.accession.latitude |default_if_none:"null" }},
-              {{ item.value }}, "{{item.obs_unit.accession.name }}", "{{ item.obs_unit.accession.country }}"
-            ],
-          {% endfor %}
-          ],false);
 
         tableData = google.visualization.arrayToDataTable([
           ['Accession','Accession ID','Replicate ID','Longitude','Latitude','Phenotype','Country'],
@@ -357,7 +319,6 @@
         var numBins = Math.ceil(0.5*Math.sqrt(numValues));
         var binWidth = (maxValue - minValue)/numBins;
         var histogramOptions = {height:500,width:"100%",legend: { position: 'none' },hAxis:{title:'Phenotypic Value'},vAxis:{title:'Frequency'}, histogram: {bucketSize: binWidth}};
-        var explorerOptions = {height:500};
         var tableOptions = {height:500, width:"100%",allowHtml:true};
 
         geoChart.draw(geoChartData, geoOptions);

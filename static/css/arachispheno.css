@@ -70,18 +70,6 @@ i.material-icons.error {
     color: black;
 }
 
-.flash_warning {
-    display: flex;
-    justify-content: center;
-    height: 100%;
-}
-
-.flash_warning h5 {
-    align-self: center;
-    width: 60%;
-    text-align: center;
-}
-
 .card-subtitle {
     font-size: 20px;
     font-weight: 300;
